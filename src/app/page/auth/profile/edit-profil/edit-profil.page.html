@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="compte"></ion-back-button>
+    </ion-buttons>
+    <ion-title>editProfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <ion-item>
+        <ion-label position="floating">
+          {{ superP.globalLanguages.inscri_input_prenom_placeholder ? superP.globalLanguages.inscri_input_prenom_placeholder : 'inscri_input_prenom_placeholder' }} :
+        </ion-label>
+        <ion-input formControlName="prenom" type="text" [(ngModel)]="result.prenom"></ion-input>
+    </ion-item>
+    <!-- <p *ngIf="form.hasError('prenom')" style="color: #f53d3d" padding-left>
+        {{ superP.globalLanguages.modifierprofile_validation_prenom ? superP.globalLanguages.modifierprofile_validation_prenom : 'modifierprofile_validation_prenom' }}"
+
+    </p> -->
+    <!-- <ion-input type="hidden" value="result.id" [(ngModel)]="result.id_contact"></ion-input> -->
+    <ion-item>
+        <ion-label position="floating">
+          {{ superP.globalLanguages.inscri_input_nom_placeholder ? superP.globalLanguages.inscri_input_nom_placeholder : 'inscri_input_nom_placeholder' }} :
+        </ion-label>
+        <ion-input formControlName="nom" [(ngModel)]="result.nom" type="text"></ion-input>
+    </ion-item>
+     <p *ngIf="form.hasError('nom')" style="color: #f53d3d" padding-left>
+        {{ superP.globalLanguages.modifierprofile_validation_nom ? superP.globalLanguages.modifierprofile_validation_nom : 'modifierprofile_validation_nom' }}"
+
+    </p> 
+    <ion-item>
+      <ion-label position="floating">
+          {{ superP.globalLanguages.modifierprofile_placeholder_tel ? superP.globalLanguages.modifierprofile_placeholder_tel : 'modifierprofile_placeholder_tel' }} :
+      </ion-label>
+      <ion-input formControlName="tel" type="number" [(ngModel)]="result.tel"></ion-input>
+    </ion-item>
+    <p *ngIf="form.hasError('tel')" style="color: #f53d3d" padding-left>
+        {{ superP.globalLanguages.modifierprofile_validation_tel ? superP.globalLanguages.modifierprofile_validation_tel : 'modifierprofile_validation_tel' }}"
+
+    </p>
+    <ion-item>
+      <ion-label position="floating">
+          {{ superP.globalLanguages.modifierprofile_placeholder_adresse ? superP.globalLanguages.modifierprofile_placeholder_adresse : 'modifierprofile_placeholder_adresse' }}    
+      </ion-label>
+      <ion-input formControlName="adresse" type="text" [(ngModel)]="result.adresse"></ion-input>
+    </ion-item> 
+    <p *ngIf="form.hasError('adresse')" style="color: #f53d3d" padding-left>
+        {{ superP.globalLanguages.modifierprofile_validation_adresse ? superP.globalLanguages.modifierprofile_validation_adresse : 'modifierprofile_validation_adresse' }}"
+    </p>
+
+    <ion-item>
+        <ion-label position="floating">
+          {{ superP.globalLanguages.inscri_input_email_placeholder ? superP.globalLanguages?.inscri_input_email_placeholder : 'inscri_input_email_placeholder' }} :
+        </ion-label>
+        <ion-input formControlName="email" type="email" [(ngModel)]="result.email"></ion-input>
+      </ion-item>   
+       <p *ngIf="form.hasError('email')" style="color: #f53d3d" padding-left>
+          {{ superP.globalLanguages.modifierprofile_validation_email ? superP.globalLanguages.modifierprofile_validation_email : 'modifierprofile_validation_email' }}"
+      </p> 
+    <ion-button  color="primary" expand="block" round strong type="submit" > 
+        {{ superP.globalLanguages.modifierprofil_btn_editinfo ? superP.globalLanguages.modifierprofil_btn_editinfo : 'modifierprofil_btn_editinfo' }}    </ion-button>
+</form>
+</ion-content>

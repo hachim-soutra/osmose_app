@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar text-center color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      {{ superP.globalLanguages.auth_header ? superP.globalLanguages.auth_header : 'auth_header' }}
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content ion-padding text-center>
+    <img class="animated bounceIn" src="../../../assets/img/logoheader.png" width="100%" height="30%" >
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <ion-item>
+            <ion-label position="floating">
+              {{ superP.globalLanguages.inscri_input_prenom_placeholder ? superP.globalLanguages.inscri_input_prenom_placeholder : 'inscri_input_prenom_placeholder' }} :
+              <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="prenom" type="text" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">{{ superP.globalLanguages.inscri_input_nom_placeholder ? superP.globalLanguages.inscri_input_nom_placeholder : 'inscri_input_nom_placeholder' }} : <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="nom" type="text" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">{{ superP.globalLanguages.inscri_input_email_placeholder ? superP.globalLanguages?.inscri_input_email_placeholder : 'inscri_input_email_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">{{ superP.globalLanguages?.inscri_input_password_placeholder ? superP.globalLanguages?.inscri_input_password_placeholder : 'inscri_input_password_placeholder'}} :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item> 
+        <ion-item>
+            <ion-label position="floating">{{ superP.globalLanguages?.inscri_input_passwordagain_placeholder ? superP.globalLanguages?.inscri_input_passwordagain_placeholder : 'inscri_input_passwordagain_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>     
+        <ion-button  color="primary"  expand="block" [disabled]="!form.valid" round strong type="submit" > 
+            {{ superP.globalLanguages?.inscri_btn ? superP.globalLanguages?.inscri_btn : 'inscri_btn' }}
+        </ion-button>
+    </form>
+    <ion-button color="primary" fill="fill"  expand="block" round strong  (click)="signin()">
+         {{ superP.globalLanguages?.inscri_deja_compte ? superP.globalLanguages?.inscri_deja_compte : 'inscri_deja_compte' }}
+      </ion-button>
+</ion-content>

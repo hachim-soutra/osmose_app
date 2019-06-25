@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.about_titre ? superP.globalLanguages?.about_titre : 'about_titre' }}</ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="result" >
+    <img  [src]="result?.url_image"  width="100%"/>
+    <div  style='max-height: 150px !important;background-color: rgba(0, 0, 0, 0.6);overflow-y: overlay !important' class="container-div" >
+            <h2 text-center text-wrap style="color: white"><b text-wrap>{{ result?.titre }}</b></h2>
+    </div>
+    <div class="description" [innerHtml]="result?.description" style="white-space: pre-wrap;padding: 10px"></div>
+</div>
+</ion-content>

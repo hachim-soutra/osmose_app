@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color="primary">
+    <ion-title>
+        {{superP.globalLanguages?.error_page}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+  <ion-grid no-margin>
+        <ion-row no-margin> 
+          <ion-col size="12">
+              <h1>              
+                {{superP.globalLanguages?.label_error}}
+              </h1>
+            <h2 text-center text-nowrap> 
+              {{superP.globalLanguages?.type_error}}
+            </h2>
+            <p text-center>
+                {{superP.globalLanguages?.txt_error}}
+              </p>
+          </ion-col>
+        </ion-row>  
+  </ion-grid>      
+</ion-content>

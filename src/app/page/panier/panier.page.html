@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages.panier_titre ? superP.globalLanguages?.panier_titre : 'panier_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+    <div *ngIf="PanierObj.length != '0'"> 
+     
+        <ion-list no-padding no-margin>
+            <ion-item no-padding no-margin *ngFor="let item of PanierObj">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                          <ion-img [src]="item?.img"></ion-img>
+                        </ion-col>
+                        <ion-col size="8">
+                            <h2 text-left text-wrap>
+                                {{ item?.titre }}
+                            </h2>
+                            <span style="font-size: 14px;" *ngIf="item?.attribut"> <br>{{ item?.attribut }}</span>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-text >
+                                        {{ superP.globalLanguages.panier_prix ? superP.globalLanguages?.panier_prix : 'panier_prix' }} :
+                                    </ion-text>
+                                    <ion-text text-left color="primary"> 
+                                            {{ item?.prix }}  {{ superP.globalLanguages.devise ? 
+                                                superP.globalLanguages?.devise :
+                                                 'capitale' }}
+                                    </ion-text>
+                                </ion-col>
+                                <ion-col size="12">
+                                    <ion-text >
+                                        {{ superP.globalLanguages.panier_quantite ? superP.globalLanguages?.panier_quantite : 'panier_quantite' }}                                    </ion-text>
+                                    <ion-text text-left color="primary"> 
+                                            {{ item?.quantite }}
+                                    </ion-text>
+                                </ion-col>
+                                <ion-col size="12">
+                                    <ion-row>
+                                        <ion-col size="5" text-center>
+                                            <ion-button extends="block" fill="outline" (click)="(item.id_produit_declinaison == null) ? moins(item?.id,id) :moins(item?.id_produit_declinaison,id_produit_declinaison)">
+                                                <ion-icon name="remove"></ion-icon>
+                                              
+                                            </ion-button>
+                                        </ion-col>
+                                        <ion-col size="5" text-center>
+                                            <ion-button extends="block" fill="outline" (click)="(item.id_produit_declinaison == null) ? plus(item?.id ,id) : plus(item?.id_produit_declinaison,id_produit_declinaison,id)">
+                                                    <ion-icon name="add"></ion-icon>
+                                               
+                                            </ion-button>
+                                           
+                                        </ion-col>
+                                        <ion-col size="2" text-center style="margin: auto" (click)="(item.id_produit_declinaison == null) ? showConfirmid(item?.id) :showConfirm(item?.id_produit_declinaison)">
+                                            <ion-icon style="font-size:30px" ios="ios-trash" md="md-trash"></ion-icon>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+
+        <ion-list  no-line>
+            <ion-item no-line>
+              <ion-grid no-padding>
+                <ion-row padding>
+                    <ion-col col-3>
+                     <ion-label>
+                        <h2> 
+                          {{ superP.globalLanguages?.panier_total ? superP.globalLanguages?.panier_total :'panier_total' }} : 
+                        </h2> 
+                     </ion-label> 
+                    </ion-col>
+                    
+                    <ion-col col-9 class="col-total-whichlist">
+                        <ion-text color="primary" text-right>
+                            <h2>
+                                {{ total }}   {{ item?.prix }}  {{ superP.globalLanguages.devise ? superP.globalLanguages?.devise :'capitale' }}
+                            </h2>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            
+        </ion-list>
+        <div padding >
+            <ion-button (click)="goToCheckout()" expand="block" fill="outline">
+                {{ superP.globalLanguages?.panier_btn_commander ? superP.globalLanguages?.panier_btn_commander :'panier_btn_commander' }}
+            </ion-button>
+        </div>
+    </div>
+    <div *ngIf="PanierObj.length == '0'"> 
+        <p text-center>
+           {{ superP.globalLanguages?.panier_message_noitems ? superP.globalLanguages?.panier_message_noitems : 'panier_message_noitems' }} 
+        </p>
+    </div>
+</ion-content>

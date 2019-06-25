@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>maman-bebe</title>
+
+  <base href="/"/>
+
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="msapplication-tap-highlight" content="no"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <!-- <link rel="stylesheet" href="assets/css/snazzy-info-window.min.css"> -->
+
+  <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdwwKGw1UHp-Tf7609xGrcfegP7RxwkZI&amp;libraries=places" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="assets/js/snazzy-info-window.min.js"></script> -->
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png"/>
+  <!-- cordova.js required for cordova apps -->
+  <!-- <script src="cordova.js"></script> -->
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('ngsw-worker.js')
+              .then(() => console.log('service worker installed'))
+              .catch(err => console.log('Error', err));
+          }
+        </script>
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+  <app-root></app-root>
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
+</html>

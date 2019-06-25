@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="compte"></ion-back-button>
+        </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.profile_btn_produitfavoris ? superP.globalLanguages?.profile_btn_produitfavoris : 'listdemades_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="result" class="ion-padding">
+    <ion-item *ngFor="let res of result; let i = index" (click)="Details(res)">
+      <ion-thumbnail slot="start">
+          <ion-img [src]="res?.url_image"></ion-img>
+      </ion-thumbnail> 
+      <ion-label>
+        <h2> {{res?.titre }} </h2>
+        <ion-text color="primary">
+          <h3>{{ res?.description }}</h3>
+        </ion-text>
+      </ion-label>
+          
+      <!-- <ion-button clear item-end *ngIf="res.etat_demande != 3" (click)="annuler(res?.id)" >
+        {{ superP.globalLanguages?.listdemandes_annuler ? superP.globalLanguages?.listdemandes_annuler : 'listdemandes_annuler' }}
+      </ion-button> -->
+    </ion-item>
+  </ion-list>
+<div *ngIf="!result">
+    <p text-center >{{ superP.globalLanguages?.listdemandes_item_not_found ? superP.globalLanguages?.listdemandes_item_not_found : 'listdemandes_item_not_found' }}</p>
+</div>
+</ion-content>

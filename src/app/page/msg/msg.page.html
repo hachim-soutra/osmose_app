@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.menu_messages ? superP.globalLanguages?.menu_messages: 'menu_messages' }}</ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="none" *ngIf="result" >
+    <ion-item-sliding  class="animated lightSpeedIn" *ngFor="let res of result; let i = index" (click)="goToDetailMessage(res)" [style.--background]="red">
+      <ion-item-options side="end">
+        <ion-item-option (click)="supprierMessage(id, statut)">
+            {{ superP.globalLanguages?.listdemandes_annuler ? superP.globalLanguages?.listdemandes_annuler : 'listdemandes_annuler' }}
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item >
+          <ion-thumbnail slot="start">
+            <img *ngIf="res?.id_etat_msg " class="friend-img" src="{{ res?.envelope }}" alt="">
+            <img *ngIf="res?.url_image" class="friend-img" src="{{ res?.url_image }}" alt="">  
+                        </ion-thumbnail> 
+            <ion-label>
+              <h2>{{ res?.titre_message }}</h2>
+              <p class="msgParagraphe">{{ res?.message }}</p>
+            </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <div *ngIf="result.length == '0' ">
+      <p text-center>{{ superP.globalLanguages?.messages_message_noitems ? superP.globalLanguages?.messages_message_noitems : 'messages_message_noitems' }}</p>
+  </div>
+
+</ion-content>

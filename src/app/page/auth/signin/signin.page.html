@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar text-center color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    {{ superP.globalLanguages.auth_header ? superP.globalLanguages?.auth_header : 'auth_header' }}
+  </ion-toolbar>
+</ion-header>
+
+<ion-content ion-padding text-center>
+  <img class="animated bounceIn" src="../../../assets/img/logoheader.png" height="25%" text-center >
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item ion-padding>
+          <ion-label color="primary" position="floating">{{ superP.globalLanguages.inscri_input_email_placeholder ? superP.globalLanguages?.inscri_input_email_placeholder : 'inscri_input_email_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="email" type="text"></ion-input>
+      </ion-item>
+        
+      <ion-item ion-padding>
+          <ion-label color="primary" position="floating">{{ superP.globalLanguages?.inscri_input_password_placeholder ? superP.globalLanguages?.inscri_input_password_placeholder : 'inscri_input_password_placeholder'}} :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" fill="fill"  expand="block" round strong (click)="forget()">
+        {{ superP.globalLanguages.auth_titre_motdepass_oublie ? superP.globalLanguages?.auth_titre_motdepass_oublie  : 'auth_titre_motdepass_oublie' }}
+      </ion-button>
+     
+      <ion-button color="primary" expand="block" [disabled]="!loginForm.valid" round strong type="submit"> 
+          {{ superP.globalLanguages ? superP.globalLanguages?.accueil_btn_auth  : 'accueil_btn_auth' }}  
+      </ion-button>
+    </form>
+    <ion-button color="primary"  expand="block" round strong (click)="onClick()">
+      {{ superP.globalLanguages.auth_titre_jeminscri  ? superP.globalLanguages?.auth_titre_jeminscri  : 'auth_titre_jeminscri ' }}
+    </ion-button>
+</ion-content>

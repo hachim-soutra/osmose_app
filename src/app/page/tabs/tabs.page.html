@@ -1,0 +1,79 @@
+
+     
+<ion-content >
+  <ion-slides color="secondary" style="width: 100%" pager="true" [options]="slideOpts">
+    <ion-slide>
+        <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>
+                {{ superP.globalLanguages.subtitle1 ? superP.globalLanguages?.subtitle1 :'subtitle1' }}
+              </ion-card-subtitle>
+              <ion-card-title>
+                  {{ superP.globalLanguages.title1 ? superP.globalLanguages?.title1 :'title1' }}
+              </ion-card-title>
+            </ion-card-header>
+            <img src="../../../assets/imgs/logo.png" width="60%" height="400"/>
+            <!-- <lottie-animation-view [options]="lottieConfig1" [width]="300" [height]="400" ></lottie-animation-view> -->
+            <ion-card-content>
+                {{ superP.globalLanguages.content1 ? superP.globalLanguages?.content1 :'content1' }}
+              <div text-center class="ion-padding">
+                  <ion-button expand="block" class="text-center" round strong (click)="onClick()">
+                      {{ superP.globalLanguages.btnspalsh ? superP.globalLanguages?.btnspalsh :'btnspalsh' }}
+                    </ion-button>
+                                </div>
+            </ion-card-content>
+          </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+              {{ superP.globalLanguages.subtitle2 ? superP.globalLanguages?.subtitle2 :'subtitle2' }}
+          </ion-card-subtitle>
+          <ion-card-title>
+              {{ superP.globalLanguages.title2 ? superP.globalLanguages?.title2 :'title2' }}
+          </ion-card-title>
+        </ion-card-header>
+        <lottie-animation-view [options]="lottieConfig2" [width]="300" [height]="400" ></lottie-animation-view>
+        <ion-card-content>
+            {{ superP.globalLanguages.content2 ? superP.globalLanguages?.content2 :'content2' }}
+            <div text-center class="ion-padding">
+                <ion-button expand="block" class="text-center" round strong (click)="onClick()">
+                    {{ superP.globalLanguages.btnspalsh ? superP.globalLanguages?.btnspalsh :'btnspalsh' }}
+                </ion-button>
+            </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+        <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>                
+                {{ superP.globalLanguages.subtitle3 ? superP.globalLanguages?.subtitle3 :'subtitle3' }}
+              </ion-card-subtitle>
+              <ion-card-title>
+                  {{ superP.globalLanguages.title3 ? superP.globalLanguages?.title3 :'title3' }}
+              </ion-card-title>
+            </ion-card-header>
+            <lottie-animation-view [options]="lottieConfig3" [width]="300" [height]="400" ></lottie-animation-view>
+            <ion-card-content>
+                {{ superP.globalLanguages.content3 ? superP.globalLanguages?.content3 :'content3' }}
+              <div text-center class="ion-padding">
+                  <ion-button expand="block" class="text-center" round strong (click)="onClick()">
+                      {{ superP.globalLanguages.btnspalsh ? superP.globalLanguages?.btnspalsh :'btnspalsh' }}
+                    </ion-button>
+              </div>
+            </ion-card-content>
+           
+          </ion-card>    <!-- <ion-text >
+      <h1>Awesome text</h1>
+    </ion-text>
+    <ion-label position="fixed">Label</ion-label>
+    <ion-button  color="succes" expand="block" round strong> start now </ion-button> -->
+
+    </ion-slide>
+
+  </ion-slides>
+ 
+
+</ion-content>

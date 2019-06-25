@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="categories-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ superP.globalLanguages?.produits_titre ? superP.globalLanguages?.produits_titre : 'produits_titre' }}    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content ion-padding>
+    <ion-segment color="primary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="grid" color="primary" checked>
+        <ion-icon color="light" ios="ios-grid" md="md-grid"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="list">
+        <ion-icon color="light" ios="ios-list" md="md-list"></ion-icon>
+      </ion-segment-button>
+ </ion-segment>
+ <div *ngIf="result.length != '0'">
+  <ion-list *ngIf="x == 0">
+    <ion-item>
+        <ion-grid no-margin>
+              <ion-row no-margin> 
+                <ion-col size="6" class="animated fadeInDown col-products" *ngFor="let res of result" (click)="gotoDetails(res)">
+                  <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;border: 1px solid black">
+                    <img src="../../../../../assets/img/background.png"/>
+                  </div>
+                    <h3 > {{res?.name}}</h3>
+                    <b>  
+                      <ion-text color="primary" text-center text-nowrap class="titles-colors">
+                          <i class="fas fa-money-bill-wave"></i>
+                        {{ res?.price}} 
+                        {{ superP.globalLanguages?.devise }}</ion-text> 
+                    </b>
+                    <!-- <p class="description" [innerHTML]='res?.description_short' style="white-space: pre-wrap;word-break: initial;
+                    text-overflow: ellipsis;
+                    height: 10px"></p><br> -->
+                </ion-col>
+              </ion-row> 
+        </ion-grid>      
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="x == 1">
+        <ion-item>
+              <ion-grid no-margin> 
+                <ion-row no-margin> 
+                    <ion-col ion-margin size="12" class="animated  fadeInDown col-products" *ngFor="let res of result" (click)="gotoDetails(res)">
+                      <!-- <a href="#" target="_blank"> -->
+                        <img src="{{res?.url_image}}" alt="" width="100%">
+                        <h2 text-center text-wrap><b class="titles-colors">{{res?.name}}</b></h2>
+                        <h1 text-center text-nowrap class="titles-colors">{{ res?.price}} 
+                            {{ superP.globalLanguages?.capitale ?
+                              superP.globalLanguages?.capitale :
+                                'capitale' }}</h1><br>
+                                <p class="description" [innerHTML]='res?.description_short' style="white-space: pre-wrap"></p><br>
+                    </ion-col>
+                </ion-row> 
+              </ion-grid>      
+          </ion-item>
+  </ion-list>
+</div>
+
+ 
+
+   <div *ngIf="result.length == '0'">
+    <p text-center>{{ superP.globalLanguages?.produit_titre_msg_noproduit ? superP.globalLanguages?.produit_titre_msg_noproduit : 'produit_titre_msg_noproduit' }}</p>
+  </div> 
+</ion-content>

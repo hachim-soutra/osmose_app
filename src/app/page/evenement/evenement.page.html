@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.detail_evenements_titre ? superP.globalLanguages?.detail_evenements_titre : 'detail_evenements_titre' }}</ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+<div>
+  <ion-card class="animated lightSpeedIn" *ngFor="let evt of result" (click)=" goToDetailEvent(evt?.id_evenement)">
+    <ion-card-header style="background-color: lavender;">
+      <ion-card-subtitle>
+        <h2>{{ evt?.titre }}</h2>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <div *ngIf="evt?.image" class="img-card" [style.background-image]="'url('+evt?.url_image+')'">
+      <img src="../../../assets/img/background.png"/>
+    </div>
+    <ion-card-content>
+        <h4 class="product-tagline">
+        <b><i class="fas fa-clock"></i> Date : {{ evt?.date}}</b>
+      </h4>
+      <h4 class="product-tagline">
+        <b><i class="fas fa-calendar-alt"></i> Heure : {{ evt?.time}}</b>
+      </h4>
+      <h2>
+        {{ evt?.description}}
+      </h2>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div *ngIf="result">
+    <p text-center>
+      {{ superP.globalLanguages?.evenements_message_noitems ?
+      superP.globalLanguages?.evenements_message_noitems : 'evenements_message_noitems' }}
+    </p>
+</div>
+</ion-content>

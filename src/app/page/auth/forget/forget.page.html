@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="signin"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>          
+      {{ superP.globalLanguages?.mot_de_pass_oublie_text ? superP.globalLanguages?.mot_de_pass_oublie_text : 'mot_de_pass_oublie_text' }}
+    </ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text ion-padding>
+    <h3>      
+      {{ superP.globalLanguages?.mot_de_pass_oublie_text ? superP.globalLanguages?.mot_de_pass_oublie_text : 'mot_de_pass_oublie_text' }}
+    </h3>
+  </ion-text>
+<form (ngSubmit)="send()">
+  <ion-item ion-padding>
+    <ion-label color="primary" position="floating" ion-margin>
+        <ion-icon name="mail"></ion-icon>
+      {{ superP.globalLanguages.inscri_input_email_placeholder ? superP.globalLanguages?.inscri_input_email_placeholder : 'inscri_input_email_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required type="text"></ion-input>
+</ion-item>
+  <ion-button color="primary" type="submit" expand="block" round strong>
+      {{ superP.globalLanguages?.mot_de_pass_oublie_btn ? superP.globalLanguages?.mot_de_pass_oublie_btn : 'mot_de_pass_oublie_btn' }}
+  </ion-button>
+</form>
+</ion-content>

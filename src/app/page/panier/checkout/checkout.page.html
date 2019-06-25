@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="panier"></ion-back-button>
+    </ion-buttons>
+    <ion-title>    
+      {{ superP.globalLanguages.checkout_titre? superP.globalLanguages?.checkout_titre : 'checkout_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content ion-padding>
+      <form [formGroup]="form" text-center>
+      
+        <ion-item >
+          <ion-label position="floating">
+              {{ superP.globalLanguages?.checkout_placeholder_nom ? superP.globalLanguages?.checkout_placeholder_nom : 'checkout_placeholder_nom' }} :
+            <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="nom" [(ngModel)]="result.nom" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+              {{ superP.globalLanguages?.checkout_placeholder_prenom ? superP.globalLanguages?.checkout_placeholder_prenom : 'checkout_placeholder_prenom' }} :
+            <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="prenom" [(ngModel)]="result.prenom" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+              {{ superP.globalLanguages?.checkout_placeholder_tel ? superP.globalLanguages?.checkout_placeholder_tel : 'checkout_placeholder_tel' }} :
+            <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="tel"[(ngModel)]="result.tel" type="number" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+              {{ superP.globalLanguages?.checkout_placeholder_adresse ? superP.globalLanguages?.checkout_placeholder_adresse : 'checkout_placeholder_adresse' }}
+            :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="adresse" [(ngModel)]="result.adresse" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">
+                {{ superP.globalLanguages?.checkout_placeholder_zipcode ? superP.globalLanguages?.checkout_placeholder_zipcode : 'checkout_placeholder_zipcode' }}
+              :<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="code_postal" [(ngModel)]="result.code_postal" type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">
+                {{ superP.globalLanguages?.checkout_placeholder_ville ? superP.globalLanguages?.checkout_placeholder_ville : 'checkout_placeholder_ville' }}
+              :<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="ville" [(ngModel)]="result.ville" type="text"></ion-input>
+          </ion-item>
+        <ion-button expand="block" color="primary" type="submit" (click)="save()">
+         {{ superP.globalLanguages?.chekhout_btn_suivant ? superP.globalLanguages?.chekhout_btn_suivant :
+          'chekhout_btn_suivant' }} 
+        </ion-button>
+      </form>
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button menu="m1"></ion-menu-button>
+        </ion-buttons>
+    <ion-title>{{ superP.globalLanguages.profile_titre ? superP.globalLanguages.profile_titre : 'profile_titre' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+   
+      
+        <div>
+            <img #img *ngIf="imagePath" [src]="imagePath+'?'+random" style="width: 100px ; height : 100px" (click)="addphoto()" />
+            <img *ngIf="!imagePath" src="assets/imgs/profile.png" style="width: 100px ; height : 100px" (click)="addphoto()"/>
+          </div><hr>
+        <h4 text-center class="info">{{ superP.User?.nom }} {{ superP.User?.prenom }}</h4>
+        <p text-center class="email">{{ superP.User?.email }}</p>
+        <ion-toolbar color="primary">
+            <ion-grid no-margin>
+                <ion-row no-margin text-center>
+                  <ion-col (click)="editprofil()">
+                      <ion-icon name="pencil"></ion-icon>
+                      {{ superP.globalLanguages.profile_editprofile ? 
+                        superP.globalLanguages.profile_editprofile : 
+                        'profile_editprofile' }}
+                  </ion-col>
+                  <ion-col (click)="logout()" >
+                      <ion-icon name="log-out"></ion-icon>
+                      {{ superP.globalLanguages?.menu_sedeconnecter ?
+                        superP.globalLanguages?.menu_sedeconnecter : 
+                      "superP.globalLanguages?.menu_sedeconnecter" }}
+                  </ion-col>
+                </ion-row>
+            </ion-grid> 
+           </ion-toolbar> 
+    <ion-button color="primary" fill="outline"  expand="block" round strong (click)="mesparticipent()">
+    <ion-icon ios="ios-list-box" md="md-list-box"></ion-icon>&nbsp;&nbsp; 
+    {{ superP.globalLanguages.profile_btn_participations ? 
+      superP.globalLanguages.profile_btn_participations : 
+      'profile_btn_participations' }} </ion-button>
+  
+    <!-- <button ion-button outline round block margin-bottom 
+    (click)="goTo('MesarticlefavorisPage')">
+    <ion-icon name="star"></ion-icon>&nbsp;&nbsp; 
+    {{ superP.globalLanguages.profile_btn_articlefavorie ? 
+      superP.globalLanguages.profile_btn_articlefavorie :
+       'profile_btn_articlefavorie' }} </button> -->
+  
+    <ion-button color="primary" fill="outline"  expand="block" round strong 
+    (click)="listdemande()">
+    <ion-icon name="star">
+    </ion-icon>&nbsp;&nbsp; {{ superP.globalLanguages.demandeinfo_btn_listdemandes ?
+       superP.globalLanguages.demandeinfo_btn_listdemandes :
+        'demandeinfo_btn_listdemandes' }} </ion-button>
+  
+    <!-- <button ion-button outline round block margin-bottom 
+    (click)="goTo('ListdemandesEboutiquePage')">
+    <ion-icon name="star"></ion-icon>&nbsp;&nbsp; 
+    {{ superP.globalLanguages.list_demande_boutique ? 
+      superP.globalLanguages.list_demande_boutique :
+       'list_demande_boutique' }} </button> -->
+  
+    <ion-button color="primary" fill="outline"  expand="block" round strong
+    (click)="navigate()">
+    <ion-icon name="star"></ion-icon>&nbsp;&nbsp;
+     {{ superP.globalLanguages.list_demande_services ? 
+      superP.globalLanguages.list_demande_services :
+       'list_demande_services' }} </ion-button>
+<ion-footer >
+    
+   </ion-footer>
+</ion-content>

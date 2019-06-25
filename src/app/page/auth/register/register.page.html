@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar text-center color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      {{ superP.globalLanguages.auth_header ? superP.globalLanguages.auth_header : 'auth_header' }}
+
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+     <!-- <form >
+        <ion-item>
+            <ion-label>{{ superP.globalLanguages.inscri_input_prenom_placeholder ? superP.globalLanguages.inscri_input_prenom_placeholder : 'inscri_input_prenom_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input [(ngModel)]="prenom" type="text" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ superP.globalLanguages.inscri_input_nom_placeholder ? superP.globalLanguages.inscri_input_nom_placeholder : 'inscri_input_nom_placeholder' }} : <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input [(ngModel)]="nom" type="text" required></ion-input>
+        </ion-item>
+       <ion-item>
+         <ion-label position="floating">{{ superP.globalLanguages.inscri_input_email_placeholder ? superP.globalLanguages?.inscri_input_email_placeholder : 'inscri_input_email_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+         <ion-input required [(ngModel)]="email" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating">{{ superP.globalLanguages?.inscri_input_password_placeholder ? superP.globalLanguages?.inscri_input_password_placeholder : 'inscri_input_password_placeholder'}} :<ion-text color="danger">*</ion-text></ion-label>
+         <ion-input required [(ngModel)]="password" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+          <ion-label position="floating">{{ superP.globalLanguages?.inscri_input_passwordagain_placeholder ? superP.globalLanguages?.inscri_input_passwordagain_placeholder : 'inscri_input_passwordagain_placeholder' }} :<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required [(ngModel)]="password" type="text"></ion-input>
+        </ion-item>
+       <ion-button block color="primary" (click)="onClick()" >
+          {{ superP.globalLanguages?.inscri_btn ? superP.globalLanguages?.inscri_btn : 'inscri_btn' }}
+       </ion-button>
+     </form> -->
+     
+  </ion-content>
+  
+  

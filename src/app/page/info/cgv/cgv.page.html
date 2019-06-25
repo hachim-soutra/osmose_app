@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.lieux_titre ? superP.globalLanguages?.lieux_titre : 'lieux_titre' }}</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <ion-list class="accordion-list" *ngIf="result">
+        <ion-list-header no-lines no-padding *ngFor="let res of result; let i=index" [ngClass]="{active: isGroupShown(i)}">
+          <button ion-item detail-none
+                  [style.background]="headerColor"
+                  [style.color]="textColor"
+                  (click)="toggleGroup(i)"
+                  class="accordion-header"
+                  [class.active]="expanded">
+              <ion-icon
+                item-left
+                name="ios-arrow-forward">
+              </ion-icon>
+              {{res?.titre }}
+          </button>
+          <div class="title-info">
+            <div class="description"  *ngIf="isGroupShown(i)" [innerHtml]="res?.texte"></div>
+          </div>
+        </ion-list-header>
+      </ion-list> -->
+      <ion-card *ngFor="let res of result; let i=index"> 
+        <ion-card-header color="primary">
+          <ion-card-subtitle>{{res?.titre }}</ion-card-subtitle>
+          <!-- <ion-card-title>{{res?.titre }}</ion-card-title> -->
+        </ion-card-header>
+        <ion-card-content>
+            <div class="description" [innerHtml]="res?.texte"></div>
+        </ion-card-content>
+      </ion-card>
+    
+      <div *ngIf="!result">
+        <p text-center>{{ superP.globalLanguages?.cgv_message_noitems ? superP.globalLanguages?.cgv_message_noitems : 'cgv_message_noitems' }}</p>
+      </div>
+</ion-content>

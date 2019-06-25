@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-menu-button menu="m1"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+         {{ superP.globalLanguages?.commande_list_titre ? superP.globalLanguages?.commande_list_titre : 'commande_list_titre' }}
+      </ion-title>
+      <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <div *ngIf="result">
+        <ion-card *ngFor="let res of result; let i = index" (click)="goToDetail(res?.id_cmd)">
+          <ion-card-header>
+            <ion-card-subtitle>{{ res?.titre }}</ion-card-subtitle>
+            <ion-card-title>              
+              <h2>{{ res?.nom }} {{ res?.prenom }}</h2>
+              <h3 text-wrap>{{ superP.globalLanguages?.commande_date_creation  ? superP.globalLanguages?.commande_date_creation : 'commande_date_creation ' }} : {{ res?.date_cmd_tmp * 1000 | date:"dd/MM/yyyy" }}</h3>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <p text-wrap [style.color]="res?.color">{{ res?.titre_etat }}</p>
+              <h3 text-wrap>{{ superP.globalLanguages?.panier_total  ? superP.globalLanguages?.panier_total : 'panier_total ' }} : {{ res?.total }} {{ superP.globalLanguages?.devise  ? superP.globalLanguages?.devise : 'devise' }}</h3>
+              <!-- <h3 text-wrap>{{ superP.globalLanguages?.panier_prixlivraison  ? superP.globalLanguages?.panier_prixlivraison : 'panier_prixlivraison '}} : {{ res?.prix_livraison }} {{ superP.globalLanguages?.devise  ? superP.globalLanguages?.devise : 'devise' }}</h3> -->
+              <h3 text-wrap>{{ superP.globalLanguages?.panier_typepaiement  ? superP.globalLanguages?.panier_typepaiement : 'panier_typepaiement ' }} {{ res?.type_paiement }}</h3>    
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+    <div *ngIf="!result">
+        <p text-center >{{ superP.globalLanguages?.commande_list_noitems  ? superP.globalLanguages?.commande_list_noitems : 'commande_list_noitems ' }}</p>
+    </div>
+</ion-content>

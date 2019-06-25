@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start" (click)="closeModal()">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-buttons>
+      <ion-title>
+          {{res?.titre}}
+      </ion-title>
+      <ion-button (click)="closeModal()" [routerLink]="[ '/panier' ]" slot="end" >
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>  
+  <ion-list padding lines="none" >
+    <ion-img [src]="res?.url_image" ></ion-img>
+    <ion-item detail-none no-line><br>
+        <h3 text-center  *ngIf="res?.prix">prix : <b>{{res?.prix}} {{ superP.globalLanguages?.capitale ? superP.globalLanguages?.capitale : 'capitale' }}</b></h3>
+        <h3 text-center  *ngIf="!res?.prix"><b></b></h3>
+    </ion-item>
+    <ion-item detail-none>
+      <p class="description" [innerHTML]='res?.description'></p><br>
+    </ion-item> 
+        <ion-button expand="block" shape="round" (click)="demandeInfo(res?.id_service)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button>
+        <ion-button expand="block" shape="round" (click)="addToCart(res)"> <ion-icon ios="ios-cart" md="md-cart">
+          </ion-icon>&nbsp;&nbsp;
+          {{ superP.globalLanguages?.detail_produit_ajouterPanier ? superP.globalLanguages?.detail_produit_ajouterPanier :'detail_produit_ajouterPanier' }}   
+        </ion-button>
+    </ion-list>
+  </ion-content>

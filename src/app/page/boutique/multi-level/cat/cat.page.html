@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="categories-page"></ion-back-button>
+        </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.produit_titre_liste_categorie ?
+      superP.globalLanguages?.produit_titre_liste_categorie : 'services_titre' }}</ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+    </ion-button>
+  </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-text >
+        <h6> <ion-icon name="pricetags"></ion-icon> {{ categorie }} \{{ sousCategorie }}\{{ sousCategorie2 }} </h6>
+      </ion-text>
+          <ion-card class="animated lightSpeedIn" *ngFor="let res of result">
+            <ion-card-header style="background-color: lavender;">
+              <ion-card-subtitle>{{ res?.name }} </ion-card-subtitle>
+            </ion-card-header>
+              <div (click)="afficherProduit(res?.id_categorie)" class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+                <img src="../../../assets/img/background.png"/>
+              </div>
+            <ion-card-content>
+            <ion-segment>
+              <ion-segment-button (click)="afficherProduit(res?.id_category)">
+                <ion-label>
+                    {{ superP.globalLanguages?.eboutique_listproducts ? superP.globalLanguages?.eboutique_listproducts : 'eboutique_listproducts' }} 
+                </ion-label>
+              </ion-segment-button>
+              <ion-segment-button *ngIf="res?.children.length > 0" (click)="goToProduits(res?.id_category,res?.children)" [disabled]="(res?.children.length > 0) ? false : true" >
+                <ion-label>
+                  {{ superP.globalLanguages?.eboutique_rubrique ? superP.globalLanguages?.eboutique_rubrique : 'eboutique_rubrique' }} {{res?.children.length }}
+                </ion-label>
+              </ion-segment-button>
+            </ion-segment>
+             <!-- <ion-row class="ion-text-center">
+                  <ion-button (click)="afficherProduit(res?.id_categorie)" color="success" extends="block" ></ion-button>
+                  <ion-button extends="block"  color="warning" ></ion-button>
+              </ion-row>  -->
+            </ion-card-content>
+          </ion-card>
+       
+        <div *ngIf="!result">
+          <p text-center>{{ superP.globalLanguages?.eboutique_message_noitems ?
+            superP.globalLanguages?.eboutique_message_noitems : 'eboutique_message_noitems' }}</p>
+        </div>
+  </ion-content>

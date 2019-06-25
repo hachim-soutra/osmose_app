@@ -1,0 +1,19 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="end" (click)="closeModal()">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-buttons>
+      <ion-title>Map</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+     
+<ion-content>
+    <ion-fab top left color="dark">
+        <button ion-fab mini class='backMap' navPop>
+            <ion-icon color="light" name="arrow-back"></ion-icon>
+        </button>
+    </ion-fab>
+    <div #map id="map"></div>
+</ion-content>

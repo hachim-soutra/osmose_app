@@ -1,0 +1,114 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>{{ superP.globalLanguages?.lieux_titre ? superP.globalLanguages?.lieux_titre : 'lieux_titre' }}</ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid no-padding >
+        <ion-row class="animated lightSpeedIn" *ngFor="let res of result"> 
+            <ion-col size="12">
+              <div class="img-list">
+                <img [src]="res?.url_image" width="100%"/>
+                <div  style='max-height: 150px !important;background-color: rgba(0, 0, 0, 0.6);overflow-y: overlay !important' class="container-div" >
+                    <h2 text-center text-wrap style="color: white"><b text-wrap>{{ res?.nom_lieu}}</b></h2>
+            </div>
+                <!-- <h4 class="txt-name" text-wrap text-center>{{res?.nom_lieu}}</h4> -->
+              </div>
+            </ion-col>
+            <ion-row>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-4>
+                        <span  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_adresse ? 
+                          superP.globalLanguages?.lieux_adresse :
+                           "lieux_adresse" }} </b></span>
+                    </ion-col>
+                    <ion-col col-8>
+                        <span  text-left text-wrap>{{ res?.adresse }} {{ res?.adresse_suite }}</span>
+                    </ion-col>
+                  </ion-row>
+                    <ion-row>
+                      <ion-col col-4>
+                          <span  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_code_postal ?
+                            superP.globalLanguages?.lieux_code_postal : 
+                            "lieux_code_postal" }} </b></span>
+                      </ion-col>
+                      <ion-col col-8>
+                          <span  text-left text-wrap>{{ res?.code_postal }}</span>
+                      </ion-col>
+                    </ion-row>
+    
+                    <ion-row>
+                      <ion-col col-4>
+                          <span  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_ville ?
+                            superP.globalLanguages?.lieux_ville : 
+                            "lieux_ville" }}  </b></span>
+                      </ion-col>
+                      <ion-col col-8>
+                          <span  text-left text-wrap>{{ res?.ville }}</span>
+                      </ion-col>
+                    </ion-row>
+    
+                    <ion-row>
+                      <ion-col col-4>
+                          <span  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_pays ?
+                            superP.globalLanguages?.lieux_pays :
+                              "lieux_pays" }} </b></span>
+                      </ion-col>
+                      <ion-col col-8>
+                          <span  text-left text-wrap>{{ res?.pays }}</span>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <!-- <ion-col col-4>
+                            <p  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_horaire ?
+                              superP.globalLanguages?.lieux_horaire : 
+                              "lieux_horaire" }}</b></p>
+                        </ion-col> -->
+                        <ion-col size="9">
+                            <!-- <p text-wrap class="description" style="white-space: pre-wrap">
+                              {{res?.horaire }}
+                            </p> -->
+                            <p class="description" [innerHTML]='res?.horaire' style="white-space: pre-wrap"></p><br>
+                        </ion-col>
+                        <ion-col size="3">
+                            <lottie-animation-view (click)="checkMap(res?.id_lieu)" [options]="lottieConfig" [width]="100" [height]="150" ></lottie-animation-view>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+             
+            </ion-row>
+         
+            <!-- <ion-button class="btn" color="primary" fill="outline" extends="block" round strong margin-bottom (click)="checkMap(res?.id_lieu)" >
+                <ion-icon ios="ios-pin" md="md-pin" ></ion-icon>&nbsp;&nbsp; 
+                  {{ superP.globalLanguages.lieu_btn_voir_cart ? 
+                    superP.globalLanguages.lieu_btn_voir_cart : 
+                    'lieu_btn_voir_cart' }} 
+              </ion-button> -->
+              <!-- <ion-button class="btn" color="dark" fill="outline"  extends="block" round strong margin-bottom href="tel:{{ res?.telephone }}">
+                  <ion-icon name="call"></ion-icon>&nbsp;&nbsp; 
+                  {{ superP.globalLanguages.lieu_btn_call ?
+                    superP.globalLanguages.lieu_btn_call :
+                  'lieu_btn_call' }} 
+                </ion-button > -->
+              <!-- <ion-button class="btn btn-wtp"  color="success" extends="block" round strong ion-padding href="https://wa.me/{{ res?.telephone }}" >
+                  <ion-icon name="chatbubbles"></ion-icon>&nbsp;&nbsp; 
+                  {{ superP.globalLanguages.lieu_btn_call_whatsapp ?
+                 superP.globalLanguages.lieu_btn_call_whatsapp : 
+                 'lieu_btn_call_whatsapp' }} 
+              </ion-button> -->
+          </ion-row>
+      </ion-grid>
+          
+
+    <div *ngIf="!result">
+      <p text-center>{{ superP.globalLanguages?.lieux_message_noitems ? superP.globalLanguages?.lieux_message_noitems : 'lieux_message_noitems' }}</p>
+    </div>
+</ion-content>

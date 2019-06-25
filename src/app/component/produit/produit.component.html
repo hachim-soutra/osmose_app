@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" (click)="closeModal()">
+            <ion-icon slot="end" name="close"></ion-icon>
+          </ion-buttons>
+      <ion-title>
+          {{res?.titre}}
+      </ion-title>
+      <ion-button [routerLink]="[ '/panier' ]" slot="end" (click)="closeModal()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+<ion-content text-center>  
+  <ion-list lines="none">
+    <ion-img [src]="res?.url_image" ></ion-img>
+    <ion-item *ngIf="res.declinaison?.length != '0'">
+        <ion-select placeholder="{{ superP.globalLanguages?.tailleLabel1 }}" (ionSelect)="declinisonSelected(d)">
+          <ion-select-option *ngFor="let x of res?.declinaison" [value]="x.attribut">
+            {{ x.attribut }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    <ion-item detail-none no-line><br>
+      <h3 text-center  *ngIf="res?.prix"><b>{{res?.prix}} {{ superP.globalLanguages?.devise }}</b></h3>
+      <h3 text-center  *ngIf="!res?.prix"><b></b></h3>
+    </ion-item>
+    <ion-item detail-none>
+      <p class="description" [innerHTML]='res?.description' style="white-space: pre-wrap"></p><br>
+    </ion-item> 
+    <ion-button expand="block" shape="round" *ngIf="showAdd" (click)="addToFavoris(res?.id_produit)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_addtofavoris ? superP.globalLanguages?.actualite_detailproduit_addtofavoris : 'actualite_detailproduit_addtofavoris' }}</ion-button>
+     
+    <ion-button expand="block" shape="round" fill="outline" *ngIf="!showAdd" (click)="removeFromFavoris(res?.id_produit)"><ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_deletefromfavoris ? superP.globalLanguages?.actualite_detailproduit_deletefromfavoris : 'actualite_detailproduit_deletefromfavoris' }}</ion-button> 
+
+    <!-- <ion-button expand="block" shape="round" (click)="demandeInfo(res?.id_produit)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button> -->
+    <ion-button expand="block" shape="round" (click)="addToCart(res)"> <ion-icon ios="ios-cart" md="md-cart">
+      </ion-icon>&nbsp;&nbsp;
+      {{ superP.globalLanguages?.detail_produit_ajouterPanier ? superP.globalLanguages?.detail_produit_ajouterPanier :'detail_produit_ajouterPanier' }}   
+    </ion-button>
+  </ion-list>
+</ion-content>

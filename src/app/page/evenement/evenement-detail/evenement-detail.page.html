@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="evenement"></ion-back-button>
+        </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.detail_evenements_titre  ? superP.globalLanguages?.detail_evenements_titre  : 'detail_evenements_titre ' }}    </ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <img *ngIf="events?.image" width="100%" [src]="events?.url_image" />
+<ion-list lines="none"> 
+    <ion-item color="dark" ion-padding-horizontal text-center>
+        <h2 text-center >{{ events?.titre }}</h2>
+    </ion-item>
+    <ion-item padding-left padding-right text-center>
+            <div class="description" [innerHtml]="events?.description"></div><br>
+    </ion-item>
+    <ion-item padding-left padding-right>
+        <div class="info-operators">
+            <h4><i class="fa fa-calendar" aria-hidden="true"></i> 
+              {{ events?.date }} 
+            </h4>
+            <h4><i class="fa fa-clock" aria-hidden="true"></i> 
+              {{ events?.time }} 
+            </h4> 
+            <h4><i class="fa fa-map-pin" aria-hidden="true"></i> 
+              {{ events?.titre_lieu }} 
+            </h4>
+        </div>
+    </ion-item>
+        <ion-button margin expand="block" shape="round" color='primary' large *ngIf="toggle" (click)="participer(events?.id_evenement)">{{ superP.globalLanguages?.evenements_btn_participer ? superP.globalLanguages?.evenements_btn_participer : 'evenements_btn_participer' }}</ion-button>
+        <ion-button margin expand="block" shape="round"  color='primary' large *ngIf="!toggle" (click)="noParticiper(events?.id_evenement)">{{ superP.globalLanguages?.evenements_btn_nonparticiper ? superP.globalLanguages?.evenements_btn_nonparticiper : 'evenements_btn_nonparticiper' }}</ion-button>
+</ion-list>
+</ion-content>

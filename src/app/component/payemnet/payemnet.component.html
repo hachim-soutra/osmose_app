@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="closeModal()">
+      <ion-icon slot="end" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+            {{ superP.globalLanguages.facturation ? 
+                superP.globalLanguages.facturation :
+                 'facturation' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="PanierObj.length != '0'"> 
+       <ion-list no-padding no-margin>
+           <ion-item  no-padding no-margin  *ngFor="let item of PanierObj" > 
+               <ion-card>
+                   <ion-card-header>
+                       <ion-card-subtitle>
+                           <h1>{{ item?.titre }}</h1> 
+                           <span style="font-size: 14px;" *ngIf="item?.attribut"> <br>{{ item?.attribut }}</span>
+                        </ion-card-subtitle>
+                       <ion-card-title>
+                            {{ superP.globalLanguages.detailcheckout_prix ? 
+                                superP.globalLanguages.detailcheckout_prix :
+                                 'detailcheckout_prix' }} : <b>{{ item?.prix }} CHF</b>
+                       </ion-card-title>
+                       <h2 text-left text-wrap color="danger"> 
+                            {{ superP.globalLanguages.detailcheckout_quantite ? 
+                                superP.globalLanguages?.detailcheckout_quantite :
+                                 'detailcheckout_quantite' }} : <b>{{ item?.quantite }}</b></h2>
+                   </ion-card-header>
+                   <ion-card-content>
+                        <div class="img-card" [style.background-image]="'url('+item?.img+')'" style="background-position: center;background-size: cover;">
+                            <img src="../../../assets/img/background.png"/>
+                        </div>
+                       
+                   </ion-card-content>
+               </ion-card>
+           <!-- <ion-grid> 
+               <ion-row>
+                   <ion-col col-3 class="img-list" [style.background-image]="'url('+item?.img+')'" ></ion-col>
+                   <ion-col col-7>
+                       <h2 text-left text-wrap>  {{ item?.titre }}</h2>
+                       <h2 text-left text-wrap color="danger">
+                            {{ superP.globalLanguages.detailcheckout_prix ? 
+                               superP.globalLanguages.detailcheckout_prix :
+                                'detailcheckout_prix' }} : <b>{{ item?.prix }} CHF</b></h2>
+                       <h2 text-left text-wrap color="danger"> 
+                           {{ superP.globalLanguages.detailcheckout_quantite ? 
+                               superP.globalLanguages?.detailcheckout_quantite :
+                                'detailcheckout_quantite' }} : <b>{{ item?.quantite }}</b></h2>
+                   </ion-col>
+                 
+               </ion-row>
+           </ion-grid>        -->
+           </ion-item>
+       </ion-list> 
+       
+       <ion-list >
+           <ion-item>
+               <ion-grid >
+                   <!-- <ion-row > 
+                       <ion-col size="5">
+                           <ion-text >
+                               <h4>
+                           {{ superP.globalLanguages.detailcheckout_soustotal ? 
+                               superP.globalLanguages?.detailcheckout_soustotal : 
+                               'detailcheckout_soustotal' }} : 
+                            </h4>
+                        </ion-text>
+                       </ion-col>
+                      
+                       <ion-col size="7" class="col-total-whichlist">
+                           <h2 text-right text-wrap color="danger"><b>{{ total }} </b>{{ superP.globalLanguages.devise ? 
+                            superP.globalLanguages?.devise :
+                             'capitale' }} </h2>
+                       </ion-col>
+                   </ion-row>   -->
+                   <!-- <ion-row  > 
+                       <ion-col size="5">
+                           <h2>{{ superP.globalLanguages.detailcheckout_fraislivraison ?
+                                superP.globalLanguages?.detailcheckout_fraislivraison  :
+                                 'detailcheckout_fraislivraison' }} : </h2>
+                       </ion-col>
+                      
+                       <ion-col size="7" class="col-total-whichlist">
+                           <h2 text-right text-wrap color="danger"><b>{{ result?.prix_livraison }}
+                                {{ superP.globalLanguages.devise ? 
+                                   superP.globalLanguages?.devise :
+                                    'capitale' }}</b></h2>
+                       </ion-col>
+                   </ion-row>   -->
+                   <ion-row> 
+                       <ion-col size="5">
+                           <h2>{{superP.globalLanguages?.detailcheckout_total }} : </h2>
+                       </ion-col>
+                      
+                       <ion-col size="7" class="col-total-whichlist">
+                           <h2 text-right text-wrap color="danger"><b>{{ result?.prix_total }} 
+                                {{ superP.globalLanguages.devise ? 
+                                   superP.globalLanguages?.devise :
+                                    'capitale' }}</b></h2>
+                       </ion-col>
+                   </ion-row>  
+               </ion-grid>
+           </ion-item>   
+        <ion-button expand="block" shape="round" color="primary" (click)='openLink()'>{{ superP.globalLanguages?.detailcheckout_payer }}</ion-button>
+       </ion-list>
+</div>
+<div *ngIf="PanierObj.length == '0'"> 
+   <p text-center>{{ superP.globalLanguages.detailcheckout_rienafficher ? 
+       superP.globalLanguages?.detailcheckout_rienafficher :
+        'detailcheckout_rienafficher' }}</p>
+</div>
+</ion-content>

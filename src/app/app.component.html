@@ -1,0 +1,56 @@
+<ion-app>
+  <ion-menu side="start" menuId="m1" class="animated bounceInLeft">
+    <ion-header>
+      <ion-toolbar text-center color="primary">
+          <img src="../assets/imgs/logoheader.png" />
+       
+        <!-- <ion-row text-center *ngIf='superP.id_contact != null'>
+            <ion-col  col-12 text-center>
+              <h2 ion-text class="no-margin bold text-white">
+                {{superP.User?.nom}} {{superP.User?.prenom}}
+              </h2>
+            </ion-col>
+          </ion-row> -->
+          <ion-row text-center class="other-data" *ngIf='superP.id_contact != null'>
+          
+          <ion-col col-12 no-padding class="column">
+            <ion-button style="right: 0px;" ion-button icon-left small class="btn-right" color="light" (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+              {{ superP.globalLanguages?.plus_menu_deconnexion ?
+                superP.globalLanguages?.plus_menu_deconnexion : 
+              "superP.globalLanguages?.plus_menu_deconnexion" }}
+            </ion-button> 
+          </ion-col>
+        </ion-row>
+
+        <ion-row text-center margin-top margin-bottom class="other-data" *ngIf='superP.id_contact == null'>
+          <ion-col text-center no-padding class="column" col-12>
+            <ion-button icon-left small class="btn-left" color="light" (click)="onClick('signin')">
+              <ion-icon name="contact"></ion-icon>
+              {{ superP.globalLanguages?.menu_seconnecter  ?
+                superP.globalLanguages?.menu_seconnecter  : 
+              "superP.globalLanguages?.menu_seconnecter " }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>  
+        <ion-list no-padding no-margin lines="none">
+          <ion-item class="animated fadeInLeft" *ngFor="let p of pages" (click)="openPage(p)">
+              <ion-icon name="{{ p?.iconMd }}" slot="start"></ion-icon>
+              {{p?.title}}
+          </ion-item> 
+        </ion-list>
+        <ion-list no-padding no-margin lines="none">
+         <ion-item detail-none ion-item *ngFor="let res of socials" [style.--background]="res?.color" class="lien animated fadeInLeft" target='_blank' [href]="res?.href">
+            <!-- <ion-icon name="{{ res?.icon }}" slot="start"></ion-icon> -->
+            <i style="font-size: 20px ;width :55px" class="{{res?.icon}}"></i>
+            <ion-label>{{res?.title}}</ion-label>
+          </ion-item> 
+        </ion-list> 
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>
+

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="cmd"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.commande_detail_titre ? superP.globalLanguages?.commande_detail_titre : 'commande_detail_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="result">
+    <ion-card *ngFor="let res of result">
+      <ion-card-header>
+        <ion-card-subtitle>{{ res?.nom }} {{ res?.prenom }}</ion-card-subtitle>
+        <ion-card-title>
+            <h3 text-wrap [style.color]="res?.color">{{ res?.titre_etat }}</h3>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <h3 >
+            <ion-icon name="home"></ion-icon> {{ res?.livraison.adresse }},{{ res?.livraison.ville }} 
+          </h3>
+          <h3>
+              <ion-icon name="call"></ion-icon> {{ res?.livraison.tel }}
+          </h3>
+          <!-- <h3 text-wrap [style.color]="res?.color"> <i class="fa fa-calendar" aria-hidden="true"></i> {{ res?.date_cmd_tmp }}</h3> -->
+          <h3 text-wrap [style.color]="res?.color">          
+            {{ superP.globalLanguages?.panier_typepaiement  ? superP.globalLanguages?.panier_typepaiement : 'panier_typepaiement ' }} :{{ res?.type_paiement }}  
+          </h3>
+          <h3 text-wrap>{{ superP.globalLanguages?.commande_total  ? superP.globalLanguages?.commande_total : 'commande_total ' }} : {{ res?.total }} {{ superP.globalLanguages?.devise ? superP.globalLanguages?.devise : 'devise' }}</h3>
+          <h3 text-wrap>{{ superP.globalLanguages?.commande_date_creation  ? superP.globalLanguages?.commande_date_creation : 'commande_date_creation ' }} : {{ res?.date_cmd_tmp * 1000 | date:"dd/MM/yyyy" }}</h3>
+      </ion-card-content>
+      <ion-list lines="none" >
+          <ion-item class="animate fadeIn" *ngFor="let r of res?.panier">
+              <ion-thumbnail slot="start">
+                  <ion-img [src]="r?.img"></ion-img>
+                </ion-thumbnail> 
+                <ion-label>
+                    <h2  text-left text-wrap><b>{{ r?.titre}}</b> <ion-badge style=" float: right;" color="primary" mode="ios">
+                        {{ superP.globalLanguages?.commande_detail_qantite ? superP.globalLanguages?.commande_detail_qantite : 'commande_detail_qantite' }} :{{ r?.quantite }}
+                    </ion-badge></h2>
+                    <span style="font-size: 14px;" *ngIf="r?.attribut"> {{ r?.attribut }}</span>
+                   
+                    <h3 text-left text-wrap>{{ superP.globalLanguages?.commande_detail_prix ? superP.globalLanguages?.commande_detail_prix : 'commande_detail_prix' }} : {{ r?.prix}} {{ superP.globalLanguages?.devise }}</h3>
+                    <h3 text-left text-wrap>{{ superP.globalLanguages?.commande_detail_total ? superP.globalLanguages?.commande_detail_total : 'commande_detail_total' }} : {{ r?.quantite * r?.prix}}  {{ superP.globalLanguages?.devise }}</h3>
+                </ion-label>
+          </ion-item>
+        </ion-list>
+    </ion-card>
+    
+  </div>
+  <div *ngIf="result?.length == '0'">
+  </div>
+</ion-content>

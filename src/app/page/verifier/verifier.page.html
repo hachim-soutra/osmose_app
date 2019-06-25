@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div >
+      <lottie-animation-view
+      [options]="lottieConfig"
+      [width]="300"
+      [height]="400">
+</lottie-animation-view>
+<div padding>
+    <ion-text >
+      <h4>
+          {{ superP.globalLanguages.payment_verification ? superP.globalLanguages?.payment_verification : 'payment_verification' }} 
+      </h4>
+    </ion-text>
+    <ion-button class="ion-text-center" (click)="verifier()">
+      {{ superP.globalLanguages.payment_btn ? superP.globalLanguages?.payment_btn : 'payment_btn' }}
+    </ion-button>
+  </div>
+</div>
+</ion-content>

@@ -1,0 +1,15 @@
+.ios, .mg{
+    page-dmd-rdv {
+        button span{
+            font-size: 18px !important;
+        }
+    }
+}
+ion-datetime ,ion-textarea{
+  border: solid 1px black;
+  border-radius: 10px;
+//   background-color: #dedede;
+}
+ion-textarea{
+    padding: 5px;
+}

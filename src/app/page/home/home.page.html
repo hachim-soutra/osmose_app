@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button menu="m1"></ion-menu-button>
+        </ion-buttons>
+
+    <ion-title>
+        {{superP.globalLanguages?.accueil_titre}}
+    </ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-slides ion-no-padding pager="false" [options]="slideOpts" *ngIf="result && result.length">
+    <ion-slide *ngFor="let res of result" [style.background-image]="'url('+res?.url_image+')'">
+      <div *ngIf="res?.titre" style='max-height: 200px !important; overflow-y: overlay !important' class="container-div"  padding>
+          <p  ion-text text-center text-wrap class="text_Accueil">{{ res?.titre }}</p>
+          <p text-style='max-height: 200px !important; overflow-y: overlay !important' text-center class="text_Accueil">
+              {{ res?.description }}
+          </p>
+          <div *ngIf="res.txtbtn">
+            <ion-button (click)="navHome(res?.url)" >
+              <ion-icon slot="start" name="eye"></ion-icon>
+            {{ res?.txtbtn}}
+            </ion-button>
+          </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

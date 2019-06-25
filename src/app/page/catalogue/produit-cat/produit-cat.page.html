@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="catalogue"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.actualite_listproduit_titre ? superP.globalLanguages?.actualite_listproduit_titre : 'actualite_listproduit_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!-- <ion-text color="primary">
+        <h1 text-center>        
+           {{ superP.globalLanguages?.actualite_listcategorie_titre ? superP.globalLanguages?.actualite_listcategorie_titre : 'actualite_listcategorie_titre' }}
+            <ion-badge color="primary" mode="ios">{{ result.length  }}</ion-badge>
+        </h1>
+    </ion-text> -->
+    <ion-card *ngFor="let res of result" (click)="openProduit(res)" >
+        <ion-card-header style="background-color: lavender;">
+          <ion-card-subtitle><h1>
+            {{ res?.titre }} 
+          </h1></ion-card-subtitle>
+        </ion-card-header>
+        <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+            <img src="../../../assets/img/background.png"/>
+        </div> 
+        <ion-card-content>
+          <ion-text>
+            <h2 style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;">{{ res?.description }}</h2>
+          </ion-text>
+        </ion-card-content>    
+    </ion-card>
+    <div *ngIf="result.length == '0'">
+        <p text-center>{{ superP.globalLanguages?.actualite_message_noitems ?
+            superP.globalLanguages?.actualite_message_noitems :
+            'actualite_message_noitems' }}</p>
+    </div>
+</ion-content>

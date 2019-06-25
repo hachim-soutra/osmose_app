@@ -1,0 +1,61 @@
+ion-slides {
+    height: 100% !important;
+        ion-slide {
+            background-size: cover;
+            background-repeat: no-repeat !important;
+            background-position: center !important; 
+            background-size: cover !important;
+            height: 100% !important;
+            position: relative;
+        }
+    }
+.ios {
+    page-accueil {
+       
+        .slide-zoom{
+            height  :100%
+        }
+        .container-div {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            bottom: 0;
+            width: 100% !important;
+            height: 200px !important;
+            max-height: 200px !important;
+            overflow-y: overlay !important;
+        }
+        .text_Accueil {
+            color: white !important;
+            white-space: wrap !important;
+        }
+        .scroll-content {
+            overflow-y: hidden !important;
+        }
+    }
+}
+
+.md {
+   
+      
+        .slide-zoom{
+            height  :100%;
+        }
+        .container-div {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            bottom: 0;
+            width: 100% !important;
+            height: 200px !important;
+            max-height: 200px !important;
+            overflow-y: overlay !important;
+        }
+        .text_Accueil {
+            color: white !important;
+            white-space: wrap !important;
+        }
+        .scroll-content {
+            overflow-y: hidden !important;
+        }
+
+   
+}

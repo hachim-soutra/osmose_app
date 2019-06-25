@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="compte"></ion-back-button>
+        </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.mesparticipations_titre ? superP.globalLanguages?.mesparticipations_titre : 'mesparticipations_titre' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="list-card" padding *ngIf="result">
+    <ion-item item-detail *ngFor="let evt of result" (click)="goToDetailEvent(evt?.id_evenement)"> 
+      <ion-thumbnail slot="start">
+        <ion-img *ngIf="evt?.image" [src]="evt?.url_image"></ion-img>
+        <img *ngIf="!evt?.image" src="../../../../../assets/img/icon.png" />
+      </ion-thumbnail> 
+      <ion-label>
+        <h2> {{ evt?.titre }} </h2><br>
+        <h3>{{ superP.globalLanguages?.commande_date_creation  ? superP.globalLanguages?.commande_date_creation : 'commande_date_creation ' }} : {{ evt?.date_debut_tmp * 1000 | date:"dd/MM/yyyy" }}</h3>
+      </ion-label>
+    </ion-item>
+  </div>
+
+    <div *ngIf="result.length == '0'">
+        <p text-center>{{ superP.globalLanguages?.mesparticipations_message_noitems ? superP.globalLanguages?.mesparticipations_message_noitems : 'mesparticipations_message_noitems' }}</p>
+    </div>
+</ion-content>

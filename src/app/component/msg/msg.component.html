@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" (click)="closeModal()">
+            <ion-icon slot="end" name="close"></ion-icon>
+          </ion-buttons>
+      <ion-title>
+          {{ superP.globalLanguages?.messages_detailmessages ? superP.globalLanguages?.messages_detailmessages : 'messages_detailmessages' }}
+        </ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content text-center>  
+  <ion-list lines="none">
+      <img *ngIf="!res?.url_image" class="friend-img" src="{{ res?.envelope }}" alt="">
+      <img *ngIf="res?.url_image" class="friend-img" src="{{ res?.url_image }}" alt="">   
+     
+    <ion-item detail-none>
+      <ion-text text-center >
+          <h2>{{ res?.titre_message }}</h2>      
+      </ion-text>
+      <!-- <ion-text color="primary" text-right>
+        <h4>{{ res?.date_envoi }}</h4>
+      </ion-text> -->
+    </ion-item>
+    <ion-item>
+      <p class="description" [innerHTML]='res?.message'></p><br>
+    </ion-item> 
+    <ion-button expand="block" shape="round" (click)="supprierMessage(res?.id_msg, '3')">
+      <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;
+      {{ superP.globalLanguages?.msg_detail_supprimer  ? superP.globalLanguages?.msg_detail_supprimer  : 'msg_detail_supprimer' }}
+    </ion-button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="m1"></ion-menu-button>
+          </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.menu_galerie ?superP.globalLanguages?.menu_galerie : 'menu_galerie' }}
+    </ion-title>
+    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="result"> 
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col class="animated lightSpeedIn" size="6" *ngFor="let res of result, let i = index" >
+            <img [src]="res?.url_image" style="--width:100%" (click)="goToZoom(result, i)"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="!result">
+      <p text-center>{{ superP.globalLanguages?.galerie_message_noitems ? superP.globalLanguages?.galerie_message_noitems : 'galerie_message_noitems' }}</p>
+  </div>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start" (click)="closeModal()">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-buttons>
+      <ion-title>
+         zoom
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>  
+  <ion-slides #slides ion-no-padding pager="true" [options]="slideOpts" > 
+      <ion-slide no-padding *ngFor="let m of media">
+        <div class="swiper-zoom-container">   
+          <img class="imgZoom" dimg="medium" width="100%" [src]="m.url_image" alt="loading.." (load)="setMediaLoaded()">
+        </div>
+      </ion-slide>
+  </ion-slides>  
+  <!-- <ion-slides ion-no-padding pager="false" [options]="slideOpts" *ngIf="result && result.length">
+      <ion-slide *ngFor="let res of result" [style.background-image]="'url('+res?.url_image+')'">
+        <div style='max-height: 200px !important; overflow-y: overlay !important' class="container-div"  padding>
+            <p  ion-text text-center text-wrap class="text_Accueil">{{ res?.titre }}</p>
+            <p text-style='max-height: 200px !important; overflow-y: overlay !important' text-center class="text_Accueil">
+                {{ res?.description }}
+            </p>
+            <div *ngIf="res.txtbtn">
+              <ion-button (click)="navHome(res?.url)" >
+                <ion-icon slot="start" name="eye"></ion-icon>
+              {{ res?.txtbtn}}
+              </ion-button>
+            </div>
+        </div>
+      </ion-slide>   -->
+</ion-content>
