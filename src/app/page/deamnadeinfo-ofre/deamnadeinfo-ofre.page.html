@@ -11,16 +11,14 @@
 </ion-header>
 
 <ion-content>
-        <!-- <ion-list padding>
-            <ion-label> {{superP.globalLanguages?.date_rdv}} : </ion-label>
-            <ion-datetime cancelText="Annuler" doneText="Valider" displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="date_resa"></ion-datetime>
+        <ion-list padding>
          
-            <ion-textarea [(ngModel)]="description" rows="9" placeholder="{{superP.globalLanguages?.rdv_input_placeholder}}"></ion-textarea>
+            <ion-textarea style="border: 1px solid black;padding :10px;border-radius: 5px;" [(ngModel)]="description" rows="9" placeholder="{{superP.globalLanguages?.demandeinfo_input_placeholder}}"></ion-textarea>
          
           <ion-button expand="block" shape="round" (click)="send()">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>
             &nbsp;&nbsp;{{ superP.globalLanguages?.demadeinfo_btn_envoyer_demande ?
             superP.globalLanguages?.demadeinfo_btn_envoyer_demande : 'demadeinfo_btn_envoyer_demande' }}
           </ion-button>
-        </ion-list> -->
+        </ion-list>
 </ion-content>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="service-detail/{{id_cat}}" ></ion-back-button>
+      </ion-buttons>
+    <ion-title>
+      {{ superP.globalLanguages?.detail_service_titre ? superP.globalLanguages?.detail_service_titre : 'detail_service_titre' }}    
+    </ion-title>  
+      <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+        <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+    </ion-button> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content >  
+    <ion-img [src]="result?.url_image" ></ion-img>
+<ion-list lines="none">
+
+  <ion-item detail-none no-line>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+            <ion-text color="primary">
+                <h3>{{result?.titre}}</h3 >
+              </ion-text>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+            <h3><b>{{result?.prix}} {{ superP.globalLanguages?.capitale }}</b></h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+  </ion-item>
+  <!-- <ion-item detail-none no-line *ngIf="result.declinaison?.length != '0'">
+    <ion-text >
+    <h3> {{ superP.globalLanguages?.tailleLabel }} :</h3>
+    </ion-text>
+  </ion-item> -->
+  <!-- <ion-item detail-none no-line> -->
+    <!-- <ion-select *ngIf="result.declinaison?.length != '0'" placeholder="{{ superP.globalLanguages?.tailleLabel1 }}" (ionChange)="declinisonSelected($event)"  [(ngModel)]="declinison">
+      <ion-select-option *ngFor="let x of result?.declinaison" [value]="x">
+        {{ x.attribut }}
+      </ion-select-option>
+    </ion-select> -->
+  <!-- </ion-item> -->
+  <!-- <ion-item detail-none no-line  text-center><br>
+  </ion-item> -->
+  <ion-item detail-none  *ngIf="result?.description">
+    <p class="description" [innerHTML]='result?.description' style="white-space: pre-wrap"></p><br>
+  </ion-item> 
+  <!-- <ion-button color="success" expand="block" shape="round" *ngIf="showAdd" (click)="addToFavoris(result?.id_produit)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_addtofavoris ? superP.globalLanguages?.actualite_detailproduit_addtofavoris : 'actualite_detailproduit_addtofavoris' }}</ion-button> -->
+   
+  <!-- <ion-button color="danger" expand="block" shape="round"  *ngIf="!showAdd" (click)="removeFromFavoris(result?.id_product)"><ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_deletefromfavoris ? superP.globalLanguages?.actualite_detailproduit_deletefromfavoris : 'actualite_detailproduit_deletefromfavoris' }}</ion-button>  -->
+
+  <ion-button expand="block" shape="round" (click)="demandeInfo(result)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button>
+  <!-- <ion-button expand="block" shape="round" (click)="addToCart(result)"> <ion-icon ios="ios-cart" md="md-cart">
+    </ion-icon>&nbsp;&nbsp;
+    {{ superP.globalLanguages?.detail_produit_ajouterPanier ? superP.globalLanguages?.detail_produit_ajouterPanier :'detail_produit_ajouterPanier' }}   
+  </ion-button> -->
+</ion-list>
+</ion-content>
+

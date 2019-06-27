@@ -66,13 +66,7 @@ export class SousCatPage implements OnInit {
       });
   }
   gotoDetails(res){
-    this.navCtrl.navigateForward("article/"+res.id_product);
+    this.navCtrl.navigateForward("article/"+res.id_produit);
   }
-//  async gotoDetails(res){
-//     const modal = await this.modalController.create({
-//       component: ProduitComponent,
-//       componentProps: { value: res }
-//       });
-//       await modal.present();
-//   }
+
 }

@@ -4,37 +4,59 @@
             <ion-menu-button menu="m1"></ion-menu-button>
           </ion-buttons>
     <ion-title>{{ superP.globalLanguages?.offre_titre ? superP.globalLanguages?.offre_titre : 'offre_titre' }}</ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+    <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
       <ion-icon name="cart"></ion-icon>
       <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-  </ion-button>
+  </ion-button> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <!-- <ion-segment (ionChange)="segmentChanged($event)" value="boutique" ion-padding>
-        <ion-segment-button value="boutique">
-          <ion-label>boutique</ion-label>
+    <ion-segment (ionChange)="segmentChanged($event)" >
+        <ion-segment-button value="boutique" checked>
+          <ion-label>{{ superP.globalLanguages?.offre_segment_boutique ? superP.globalLanguages?.offre_segment_boutique : 'offre_segment_boutique' }}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="offre">
-          <ion-label>offre</ion-label>
+          <ion-label>{{ superP.globalLanguages?.offre_segment_service  ? superP.globalLanguages?.offre_segment_service  : 'offre_segment_service ' }}</ion-label>
         </ion-segment-button>
-      </ion-segment> -->
-        <ion-grid class="animated lightSpeedIn" *ngIf="services">
-          <ion-row no-padding>
-              <ion-col  size="6"  *ngFor="let res of services" >
-                <ion-card (click)="openProduit(res)">
-                  <ion-card-header text-center>
-                    <ion-card-subtitle>{{res?.titre}}</ion-card-subtitle>
-                  </ion-card-header>
-                  <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
-                    <img src="../../../assets/img/background.png"/>
-                  </div>                
-                </ion-card>
-              </ion-col>
-          </ion-row>
-        </ion-grid>
-      <div *ngIf="services.length == '0'">
-        <p text-center>{{ superP.globalLanguages?.offre_noitems_produits ? superP.globalLanguages?.offre_noitems_produits : 'offre_noitems_produits' }}</p>
-      </div> 
+      </ion-segment>
+      <div *ngIf="x == 0">
+          <ion-grid >
+              <ion-row no-padding>
+                    <ion-card class="animated lightSpeedIn" *ngFor="let res of services" (click)="gotToDetailProduit(res.id_service)">
+                            <ion-card-content >
+                                <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+                                    <img src="../../../assets/img/background.png"/>
+                                </div>  
+                                <ion-text class="ion-text-center">
+                                        <h1>{{ res?.titre }}</h1>
+                                    </ion-text>
+                            </ion-card-content>
+                    </ion-card>
+            </ion-row>
+          </ion-grid>
+          <div *ngIf="services.length == '0'">
+              <p text-center>{{ superP.globalLanguages?.offre_noitems_services ? superP.globalLanguages?.offre_noitems_services : 'offre_noitems_services' }}</p>
+          </div>
+      </div>
+      
+       <div *ngIf="x == 1">
+            <ion-grid >
+                    <ion-row no-padding>
+                          <ion-card class="animated lightSpeedIn" *ngFor="let res of produits" (click)="gotToDetailService(res.id_produit)">
+                                  <ion-card-content >
+                                      <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+                                          <img src="../../../assets/img/background.png"/>
+                                      </div>  
+                                      <ion-text class="ion-text-center">
+                                            <h1>{{ res?.titre }}</h1>
+                                        </ion-text>
+                                  </ion-card-content>
+                          </ion-card>
+                  </ion-row>
+                </ion-grid>
+          <div *ngIf="produits.length == '0'">
+              <p text-center>{{ superP.globalLanguages?.offre_noitems_produits ? superP.globalLanguages?.offre_noitems_produits : 'offre_noitems_produits' }}</p>
+          </div>
+       </div> 
 </ion-content>

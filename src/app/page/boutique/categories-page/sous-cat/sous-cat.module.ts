@@ -24,7 +24,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SousCatPage,ProduitComponent,DemandeinfoComponent],
-  entryComponents: [ProduitComponent,DemandeinfoComponent]
+  declarations: [SousCatPage,ProduitComponent],
+  entryComponents: [ProduitComponent]
 })
 export class SousCatPageModule {}

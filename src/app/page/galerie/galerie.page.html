@@ -6,10 +6,10 @@
     <ion-title>
         {{ superP.globalLanguages?.menu_galerie ?superP.globalLanguages?.menu_galerie : 'menu_galerie' }}
     </ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+    <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
       <ion-icon name="cart"></ion-icon>
       <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-  </ion-button>
+  </ion-button> -->
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,10 @@
     <ion-grid fixed>
       <ion-row>
         <ion-col class="animated lightSpeedIn" size="6" *ngFor="let res of result, let i = index" >
-            <img [src]="res?.url_image" style="--width:100%" (click)="goToZoom(result, i)"/>
+            <div (click)="goToZoom(result, i)" class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+                <img src="../../../assets/img/background.png"/>
+              </div>
+            <!-- <img [src]="res?.url_image" style="--width:100%" (click)="goToZoom(result, i)"/> -->
         </ion-col>
       </ion-row>
     </ion-grid>

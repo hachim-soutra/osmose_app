@@ -5,10 +5,10 @@
           </ion-buttons>
     <ion-title>{{ superP.globalLanguages?.produit_titre_liste_categorie ?
       superP.globalLanguages?.produit_titre_liste_categorie : 'services_titre' }}</ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+    <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
         <ion-icon name="cart"></ion-icon>
         <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-    </ion-button>
+    </ion-button> -->
   </ion-toolbar>
 </ion-header>
 
@@ -23,20 +23,15 @@
           refreshingText="Refreshing...">
         </ion-refresher-content>
       </ion-refresher>
-      <ion-card class="animated lightSpeedIn" *ngFor="let res of result">
-        <ion-card-header >
-          <ion-card-subtitle><h1> {{ res?.titre }} </h1></ion-card-subtitle>
+      <ion-card class="animated lightSpeedIn" *ngFor="let res of result" style="border-radius: 15px">
+        <ion-card-header style="background-color: rgba(25, 47, 241, 0.534);color: white">
+          <ion-card-subtitle color="light"><h1 col> {{ res?.titre }} </h1></ion-card-subtitle>
         </ion-card-header>
-          <!-- <div (click)="afficherProduit(res?.id_category)" class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+          <div (click)="afficherProduit(res?.id_categorie)" class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
             <img src="../../../assets/img/background.png"/>
-          </div> -->
+          </div>
         <!-- <ion-card-content> -->
-            <ion-text class="ion-padding">
-                <h2 style="white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;">{{ res?.description }}</h2>
-              </ion-text>
-              <a href="#"> voir</a>
+            
         <!-- <ion-segment>
           <ion-segment-button (click)="afficherProduit(res?.id_category)">
             <ion-label>

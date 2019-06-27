@@ -15,7 +15,7 @@
             <ion-badge color="primary" mode="ios">{{ result.length  }}</ion-badge>
         </h1>
     </ion-text> -->
-    <ion-card *ngFor="let res of result" (click)="openProduit(res)" >
+    <ion-card *ngFor="let res of result" (click)="openProduit(res)" style="border: 1px">
         <ion-card-header style="background-color: lavender;">
           <ion-card-subtitle><h1>
             {{ res?.titre }} 

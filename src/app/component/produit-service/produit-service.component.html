@@ -6,10 +6,10 @@
       <ion-title>
           {{res?.titre}}
       </ion-title>
-      <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
         <ion-icon name="cart"></ion-icon>
         <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-      </ion-button>
+      </ion-button> -->
     </ion-toolbar>
   </ion-header>
 <!-- <ion-header>
@@ -39,7 +39,7 @@
   </ion-item> 
    
      
-        <!-- <ion-button expand="block" (click)="demandeInfo(res?.id_catalogue)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button> -->
+        <ion-button expand="block" (click)="demandeInfo(res?.id_catalogue)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button>
     
         <ion-button expand="block" *ngIf="showAdd" (click)="addToFavoris(res?.id_catalogue)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_addtofavoris ? superP.globalLanguages?.actualite_detailproduit_addtofavoris : 'actualite_detailproduit_addtofavoris' }}</ion-button>
      

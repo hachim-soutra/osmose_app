@@ -14,6 +14,7 @@ export class ListDemandePage implements OnInit {
   obj: any;
   result: any;
   colors:any;
+  x: number;
 
   constructor(public superP: SuperService,private storage: Storage,private globalProv: GlobalService,public modalController:ModalController) {
     this.colors = [
@@ -41,6 +42,10 @@ export class ListDemandePage implements OnInit {
     })
   }
 
+  ionViewDidEnter() {
+    this.init();
+  }
+
   annuler(id) {
     let self = this;
     self.globalProv.removeDemandeInfo(id).subscribe(Data => {
@@ -56,6 +61,19 @@ export class ListDemandePage implements OnInit {
       }
     })
   }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev.detail);
+    if (ev.detail.value =='all'){
+      this.x = 0;
+    } else if(ev.detail.value =='active'){
+      this.x = 1;
+    }else{
+      this.x = 2;
+
+    }
+  }
+  
   async Details(res){
     const modal = await this.modalController.create({
       component: DemmandesListComponent,
@@ -63,4 +81,6 @@ export class ListDemandePage implements OnInit {
       });
     await modal.present();
    }
+
+   
 }

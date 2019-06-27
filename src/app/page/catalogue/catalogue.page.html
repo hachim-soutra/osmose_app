@@ -8,10 +8,10 @@
           superP.globalLanguages?.actualite_titre : 
           'actualite_titre' }}
     </ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+    <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
       <ion-icon name="cart"></ion-icon>
       <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-  </ion-button>
+  </ion-button> -->
   </ion-toolbar>
 </ion-header>
 
@@ -28,15 +28,17 @@
     <h1 text-center>
       {{ superP.globalLanguages?.actualite_listproduit_titre}} <ion-badge color="primary" mode="ios">{{ result.length  }}</ion-badge></h1>
   </ion-text>
-    <ion-card class="animated lightSpeedIn" *ngFor="let res of result" [routerLink]="[ '/catalogue', res?.id_categorie_catalogue ]">
-        <ion-card-header style="background-color: lavender;">
-            <ion-card-subtitle>{{ res?.titre }} </ion-card-subtitle>
-            <!-- <ion-card-title><a href="res?.url">{{ res?.txtbtn }}</a></ion-card-title> -->
-        </ion-card-header>
-        <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
-          <img src="../../../assets/img/background.png"/>
-        </div>       
-      </ion-card>
+  <ion-card class="animated lightSpeedIn" *ngFor="let res of result" [routerLink]="[ '/catalogue', res?.id_categorie_catalogue ]">
+      <ion-card-content >
+          <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;">
+              <img src="../../../assets/img/background.png"/>
+          </div>  
+          <ion-text class="ion-text-center">
+              <h1>{{ res?.titre }}</h1>
+          </ion-text>
+      </ion-card-content>
+</ion-card>
+    
     <div *ngIf="result.length == '0'">
         <p text-center>{{ superP.globalLanguages?.actualite_message_noitems ?
            superP.globalLanguages?.actualite_message_noitems :

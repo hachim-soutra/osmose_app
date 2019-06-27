@@ -14,7 +14,7 @@ export class DemandeinfoPage implements OnInit {
 
   @Input() value: object;
   description: any;
-  res: string;
+  res: any;
   page: string;
 
   constructor(
@@ -25,6 +25,7 @@ export class DemandeinfoPage implements OnInit {
     private nav: NavController
   ) { 
     this.navParams.paramMap.subscribe( para =>{
+     
       this.res = para.get('id');
     })
       console.log('res : b '+ this.res)
@@ -38,14 +39,14 @@ export class DemandeinfoPage implements OnInit {
      if(self.description) {
       self.storage.ready().then(() => {
         self.storage.get("id_contact").then((id_contact) => {
-          self.globalProv.sendDemandeInfoEboutique(id_contact, "191", self.description).subscribe(Data => {
+          self.globalProv.sendDemandeInfo(id_contact, this.res, self.description).subscribe(Data => {
               if (Data) {
                 console.log('res demande : ', JSON.stringify(Data))
                 let obj:any=[];
                 obj = Data;
                 if(obj.status == "200") {
                   self.globalProv.presentToast(obj.result,3000,"bottom");
-                  this.nav.navigateRoot("categories-page");
+                  this.nav.navigateRoot("catalogue");
                 }
               }
             });

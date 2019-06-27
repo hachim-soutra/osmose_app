@@ -165,7 +165,8 @@ export class AppComponent {
               this.pages = [ 
                 { title: this.superP.globalLanguages.menu_accueil, component: "home", iconMd: "md-home", iconIos: "ios-home" },
                 { title: this.superP.globalLanguages.menu_boutique_enligne, component: "categories-page", iconMd: "basket", iconIos: "basket" },
-                // { title: this.superP.globalLanguages.menu_boutique_offres, component: "offre", iconMd: "pricetag" ,iconIos: "pricetag"},
+                { title: this.superP.globalLanguages.menu_services_enligne, component: "services", iconMd: "md-shirt", iconIos: "ios-shirt" },
+                { title: this.superP.globalLanguages.menu_boutique_offres, component: "offre", iconMd: "pricetag" ,iconIos: "pricetag"},
                 // { title: this.superP.globalLanguages.menu_RDV ,component:"rdv", iconMd:"calendar" ,iconIos:"calendar"},
                 { title: this.superP.globalLanguages.menu_evenement, component: "evenement", iconMd: "md-eye", iconIos: "ios-eye" },
                 { title: this.superP.globalLanguages.menu_actualite, component: "catalogue", iconMd: "md-flame", iconIos: "ios-flame" },
@@ -176,18 +177,18 @@ export class AppComponent {
                 
                 { title: this.superP.globalLanguages.menu_favoris, component: "fav", iconMd: "heart", iconIos: "ios-heart-outline" },
                 // { title: this.superP.globalLanguages.menu_visitevirtuel, component: "detailvisite", iconMd: "md-calendar", iconIos: "ios-calendar" },
-                { title: this.superP.globalLanguages.menu_temoignage, component: "temiognage", iconMd: "md-shirt", iconIos: "ios-shirt" },
-                { title: this.superP.globalLanguages.menu_shop, component: "shop", iconMd: "md-shirt", iconIos: "ios-shirt" },
-                { title: this.superP.globalLanguages.menu_blog, component: "blog", iconMd: "md-shirt", iconIos: "ios-shirt" },
-                { title: this.superP.globalLanguages.menu_tarif, component: "tarif", iconMd: "md-shirt", iconIos: "ios-shirt" },
+                // { title: this.superP.globalLanguages.menu_temoignage, component: "temiognage", iconMd: "md-shirt", iconIos: "ios-shirt" },
+                // { title: this.superP.globalLanguages.menu_shop, component: "shop", iconMd: "md-shirt", iconIos: "ios-shirt" },
+                // { title: this.superP.globalLanguages.menu_blog, component: "blog", iconMd: "md-shirt", iconIos: "ios-shirt" },
+                // { title: this.superP.globalLanguages.menu_tarif, component: "tarif", iconMd: "md-shirt", iconIos: "ios-shirt" },
                
                 // { title: this.superP.globalLanguages.menu_boutique_enligne, component: "MultilevelsPage", iconMd: "md-shirt", iconIos: "ios-shirt" },
                 // { title: this.superP.globalLanguages.menu_creation, component: "CreationPage", iconMd: "md-images", iconIos: "ios-images" },
                 // { title: this.superP.globalLanguages.menu_visitevirtuel, component: "VisitevirtuelPage", iconMd: "md-calendar", iconIos: "ios-calendar" },
                 // { title: this.superP.globalLanguages.menu_lookbook, component: "LookbookPage", iconMd: "md-eye", iconIos: "ios-eye" },
                 { title: this.superP.globalLanguages.menu_mon_profil, component: "compte", iconMd: "md-person", iconIos: "ios-person" },
-                // { title: this.superP.globalLanguages.menu_condition_general, component: "cgv", iconMd: "md-information-circle", iconIos: "ios-information-circle" },
-                { title: this.superP.globalLanguages.menu_commandes, component: "cmd", iconMd: "md-filing", iconIos: "ios-filing" },
+                { title: this.superP.globalLanguages.menu_boutique_avantapres, component: "cgv", iconMd: "md-information-circle", iconIos: "ios-information-circle" },
+                // { title: this.superP.globalLanguages.menu_commandes, component: "cmd", iconMd: "md-filing", iconIos: "ios-filing" },
               ];
         }
       })

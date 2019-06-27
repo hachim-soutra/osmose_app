@@ -29,6 +29,20 @@ export class GlobalService {
     return (this.superP.Connected) ? this.http.get(this.superP.URL + "api/accueil-hors-ligne.php").pipe(res => res) : null ;
   }
 
+   /**
+   * offres list
+   */
+  listoffres() {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/avant-apres-liste.php").pipe(res => res) : null;
+  }
+ 
+  /**
+   * offres detail
+   */
+  listoffresDetail(id) {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/avant-apres-detail.php?id="+id).pipe(res => res) : null;
+  }
+
   /**
    * login
    */
@@ -47,7 +61,7 @@ export class GlobalService {
    * services list demande info 
   */
  listDemandeInfoServices(id_contact) {
-  return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/produit-favoris-liste.php?id_contact="+id_contact).pipe(res => res) : null;
+  return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-infos-liste.php?id_contact="+id_contact).pipe(res => res) : null;
 }
 
     /**
@@ -64,18 +78,18 @@ export class GlobalService {
     return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/resetpass.php?email="+params).pipe(res => res) : null;
   }
 
-  // /**
-  //  * catégorie list 
+  /**
+   * catégorie list 
   //  */
-  // getListCategories() {
+  // getListServices() {
   //   return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/categorie_produit.php").map(res => res) : null;
   // }
  
   // /**
   //  * catégorie list  multilevels
   //  */
-  getListCategoriesServices(id_categorie){
-    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/produit-liste.php?id_categorie="+id_categorie).pipe(res => res) : null;
+  getListCategoriesServices(){
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/categorie_service.php").pipe(res => res) : null;
   }
   
   getListCategoriesLevel(id_categorie){
@@ -88,13 +102,21 @@ export class GlobalService {
     return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/categorie_produit.php").pipe(res => res) : null;
   }
 
+  /**
+   * sevices list detail
+   */
+  getServicesDetail(id) {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-liste.php?id_categorie="+id).pipe(res => res) : null;
+  }
+
    /**
    * list produit
    */
-  getListServices(id_categorie) {
-    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/catalogue-categorie-multilevel.php?id_categorie="+id_categorie).pipe(res => res) : null;
+  getListServices() {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/categorie-service.php").pipe(res => res) : null;
   }
 
+ 
   /**
    * galerie
    */
@@ -134,17 +156,17 @@ export class GlobalService {
    * produit demande info
    */
   sendDemandeInfoEboutique(id_contact, id_produit, description) {
-    console.log(id_contact);
-    console.log(id_produit);
-    console.log(description);
-    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/catalogue-infos.php?id_contact="+id_contact+"&id_catalogue="+id_produit+"& description="+description).pipe(res => res) : null;
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/produit-infos.php?id_contact="+id_contact+"&id_produit="+id_produit+"& description="+description).pipe(res => res) : null;
   }
  
   /**
    * prestation demande info
    */
-  sendDemandeInfoServices(id_contact, id_service, description, date_resa) {
-    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-infos.php?id_contact="+id_contact+"&id_service="+id_service+"&description="+description+"&date_resa="+date_resa).pipe(res => res) : null;
+  // sendDemandeInfoServices(id_contact, id_service, description) {
+  //   return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-infos.php?id_contact="+id_contact+"&id_service="+id_service+"&description="+description).pipe(res => res) : null;
+  // }
+  sendDemandeInfoServices(id_contact, id_service, description) {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-infos.php?id_contact="+id_contact+"&id_service="+id_service+"&description="+description).pipe(res => res) : null;
   }
 
   /**
@@ -419,12 +441,27 @@ export class GlobalService {
   listDemandeInfo(id_contact) {
     return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/catalogue-infos-liste.php?id_contact="+id_contact).pipe(res => res) : null;
   }
+
+   /**
+   * services list demande info 
+  */
+ listDemandeInfoEboutique(id_contact) {
+  // return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/service-infos-liste.php?id_contact="+id_contact).pipe(res => res) : null;
+  return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/produit-infos-liste.php?id_contact="+id_contact).pipe(res => res) : null;
+}
  
   /**
    * remove demande
    */
   removeDemandeInfo(id) {
     return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/catalogue-infos-update.php?id="+id).pipe(res => res) : null;
+  }
+
+   /**
+   * remove demande eboutique
+   */
+  removeDemandeInfoEboutique(id) {
+    return (this.superP.Connected) ? this.http.get(this.superP.URL+"api/produit-infos-update.php?id="+id).pipe(res => res) : null;
   }
 
   /**

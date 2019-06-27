@@ -4,10 +4,10 @@
             <ion-menu-button menu="m1"></ion-menu-button>
           </ion-buttons>
     <ion-title>{{ superP.globalLanguages?.lieux_titre ? superP.globalLanguages?.lieux_titre : 'lieux_titre' }}</ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+    <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
       <ion-icon name="cart"></ion-icon>
       <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-  </ion-button>
+  </ion-button> -->
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -67,44 +67,43 @@
                       </ion-col>
                     </ion-row>
                     <ion-row>
-                        <!-- <ion-col col-4>
-                            <p  text-left text-wrap><b>{{ superP.globalLanguages?.lieux_horaire ?
-                              superP.globalLanguages?.lieux_horaire : 
-                              "lieux_horaire" }}</b></p>
-                        </ion-col> -->
-                        <ion-col size="9">
-                            <!-- <p text-wrap class="description" style="white-space: pre-wrap">
-                              {{res?.horaire }}
-                            </p> -->
-                            <p class="description" [innerHTML]='res?.horaire' style="white-space: pre-wrap"></p><br>
-                        </ion-col>
-                        <ion-col size="3">
-                            <lottie-animation-view (click)="checkMap(res?.id_lieu)" [options]="lottieConfig" [width]="100" [height]="150" ></lottie-animation-view>
+                      <ion-col col-4>
+                        <p  text-left text-wrap style="white-space: pre-wrap"><b>{{ superP.globalLanguages?.lieux_horaire ?
+                          superP.globalLanguages?.lieux_horaire : 
+                          "lieux_horaire" }}</b></p>
+                      </ion-col>
+                      <ion-col col-8>
+                        <p text-wrap class="description" style="white-space: pre-wrap">
+                          {{res?.horaire }}
+                        </p> 
                         </ion-col>
                     </ion-row>
-                </ion-grid>
-             
+                  </ion-grid>
+
+                        
+                  <p  class="description" [innerHTML]='res?.horaire' style="white-space: pre-wrap; padding: 10px;"></p><br>
             </ion-row>
          
-            <!-- <ion-button class="btn" color="primary" fill="outline" extends="block" round strong margin-bottom (click)="checkMap(res?.id_lieu)" >
+            <ion-button class="btn" color="primary" fill="outline" extends="block" round strong margin-bottom (click)="checkMap(res?.id_lieu)" >
                 <ion-icon ios="ios-pin" md="md-pin" ></ion-icon>&nbsp;&nbsp; 
                   {{ superP.globalLanguages.lieu_btn_voir_cart ? 
                     superP.globalLanguages.lieu_btn_voir_cart : 
                     'lieu_btn_voir_cart' }} 
-              </ion-button> -->
-              <!-- <ion-button class="btn" color="dark" fill="outline"  extends="block" round strong margin-bottom href="tel:{{ res?.telephone }}">
+              </ion-button>
+              <ion-button class="btn" color="dark" fill="outline"  extends="block" round strong margin-bottom href="tel:{{ res?.telephone }}">
                   <ion-icon name="call"></ion-icon>&nbsp;&nbsp; 
                   {{ superP.globalLanguages.lieu_btn_call ?
                     superP.globalLanguages.lieu_btn_call :
                   'lieu_btn_call' }} 
-                </ion-button > -->
-              <!-- <ion-button class="btn btn-wtp"  color="success" extends="block" round strong ion-padding href="https://wa.me/{{ res?.telephone }}" >
+                </ion-button > 
+              <ion-button class="btn btn-wtp"  color="success" extends="block" round strong ion-padding href="https://wa.me/{{ res?.telephone }}" >
                   <ion-icon name="chatbubbles"></ion-icon>&nbsp;&nbsp; 
                   {{ superP.globalLanguages.lieu_btn_call_whatsapp ?
                  superP.globalLanguages.lieu_btn_call_whatsapp : 
                  'lieu_btn_call_whatsapp' }} 
-              </ion-button> -->
-          </ion-row>
+              </ion-button>
+          <!-- <lottie-animation-view style="position: absolute;bottom: -15px;right: 10px;" (click)="checkMap(res?.id_lieu)" [options]="lottieConfig" [width]="100" [height]="150" ></lottie-animation-view> -->
+        </ion-row>
       </ion-grid>
           
 

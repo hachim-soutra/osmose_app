@@ -13,6 +13,7 @@ import { OffrePComponent } from 'src/app/component/offre-p/offre-p.component';
 export class OffrePage implements OnInit {
   services:any = [];
   produits:any = [];
+  x: number;
 
   constructor(
     public superP: SuperService,
@@ -22,6 +23,7 @@ export class OffrePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.listOffresProduits();
     this.listOffresServices();
   }
  
@@ -51,7 +53,24 @@ export class OffrePage implements OnInit {
        
     });
   }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev.detail);
+    if (ev.detail.value =='offre'){
+      this.x = 0;
+    }else{
+      this.x = 1;
+    }
+  }
    
+  gotToDetailProduit(res) {
+    this.nav.navigateForward("offre-produit-detail/"+res);
+  }
+
+  gotToDetailService(res) {
+    this.nav.navigateForward("offre-service-detail/"+res);
+  }
+
   async openProduit(x) {
     const modal = await this.modalController.create({
     component: OffrePComponent,

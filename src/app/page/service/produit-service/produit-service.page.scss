@@ -1,0 +1,7 @@
+ion-segment{
+    background-color: rgba(71, 61, 139, 0.534);
+    ion-segment-button {
+        --background-activated : red;
+        --background-checked : green;
+    }
+}

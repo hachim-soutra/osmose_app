@@ -14,55 +14,79 @@ export class ProfilePage implements OnInit {
 
   imagePath:any;
   random:any;
+  colors: string[];
+  result: Object;
+  result1: any;
+  x: number;
   constructor(
     public globalProv: GlobalService,
     public superP: SuperService,
     private storage: Storage,
     private navCtrl: NavController
-  ) { }
+  ) {
+    this.colors = [
+      "#ff0000",
+      "#008000",
+      "#800080"
+    ]
+   }
 
   ngOnInit() {
     this.init();
  }
 
- init () {
-     let self = this;
-     this.storage.ready().then(() => {
-       this.storage.get("user").then((user) => {
-         if (user) {
-           if(user.photo_profil) {
-             self.imagePath = user.photo_profil;
-             let d = new Date();
-             self.random = d.getTime();
-           } else {
-             self.imagePath = null;
-           }
-           self.superP.User = user;
-         }
-       })
-     })
- }
+ ionViewDidEnter() {
+  this.init();
+}
 
+init() {
+  let self = this;
+  this.storage.ready().then(() => {
+    this.storage.get("id_contact").then((id_contact) => {
+        self.globalProv.listDemandeInfoEboutique(id_contact).subscribe(Data => {
+          if (Data) {
+            console.log('data : ', Data);
+            // if(obj.status == "200") { 
+              let x:any;
+              this.result =Data;
+              // for(x of this.result1){
+              //    if(x.etat = '1'){
+              //      this.result = x;
+              //    }
+              //  }
+          }
+        })
+    })
+  })
+}
 
-logout() {
-  this.superP.id_contact = null;
-  this.storage.remove('id_contact');
-  this.storage.remove('user');
-  this.storage.remove('panier');
-  this.navCtrl.navigateForward('home');
-}
-navigate(){
-  this.navCtrl.navigateForward('list-demande-services');
+  annuler(id) {
+    let self = this;
+    self.globalProv.removeDemandeInfoEboutique(id).subscribe(Data => {
+      if (Data) {
+        let obj:any=[];
+        obj = Data;
+        console.log('remove : ', Data);
+        if(obj.status == "200") { 
+          this.globalProv.presentToast( obj.result, 3000 , 'bottom')
+          this.init();
+        } else{
+          this.globalProv.presentToast( obj.result, 3000 , 'bottom')
+        }
+      }
+    })
+  }
 
-}
-editprofil(){
-  this.navCtrl.navigateForward('editprofil');
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev.detail);
+    if (ev.detail.value =='all'){
+      this.x = 0;
+    } else if(ev.detail.value =='active'){
+      this.x = 1;
+    }else{
+      this.x = 2;
 
-}
-listdemande(){
-  this.navCtrl.navigateForward('list-demande');
-}
-mesparticipent(){
-  this.navCtrl.navigateForward('mes-participent');
-}
+    }
+  }
+  
 }

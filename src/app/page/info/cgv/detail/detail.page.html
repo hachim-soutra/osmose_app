@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="cgv"></ion-back-button>
+        </ion-buttons>
+    <ion-title>
+        {{ superP.globalLanguages?.detail_avantapres ? superP.globalLanguages?.detail_avantapres : 'detail_avantapres' }}   
+    </ion-title>
+        <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+      <ion-icon name="cart"></ion-icon>
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list *ngFor="let res of result; let i = index">
+        <div class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover">
+            <img src="../../../../../assets/img/background.png"/>
+           
+        </div>
+        <ion-text color="primary">
+            <h1 text-center>{{res?.titre}}</h1>
+          </ion-text>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 zoom text-center>
+                <h1>Avant</h1>
+                <div class="img-card" [style.background-image]="'url('+res?.url_image_avant+')'" style="background-position: center;background-size: cover">
+                    <img src="../../../../../assets/img/background.png"/>
+                </div>
+                <!-- <img [src]="res?.url_image_avant" width="100%" (click)="zoom(res?.url_image_avant)" > -->
+            </ion-col>
+            <ion-col col-6 zoom text-center>
+                <h1>Après</h1>
+                <div class="img-card" [style.background-image]="'url('+res?.url_image_apres+')'" style="background-position: center;background-size: cover">
+                    <img src="../../../../../assets/img/background.png"/>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        <ion-list padding>
+             
+              <!-- <ion-item padding-left padding-right>
+                  <div class="info-operators" *ngFor="let p of result['lieu']">
+                      <p><i class="fa fa-home" aria-hidden="true"></i> {{ p.nom_lieu }} </p>
+                  </div>
+              </ion-item> -->
+              <ion-item detail-none><br>
+                  <p class="description" [innerHTML]="res?.description" style="white-space: pre-wrap"></p><br>
+              </ion-item>
+              <!-- <ion-item padding detail-none text-center>
+                  <button ion-button large block outline round color="dark" *ngIf="showAdd" (click)="addToFavoris(result?.id_produit)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.detail_produit_ajouterfavorie ? superP.globalLanguages?.detailproduit_btn_addtofavoris : 'detailproduit_btn_addtofavoris' }}</button>
+                  <button ion-button large block outline round color="dark" *ngIf="!showAdd" (click)="removeFromFavoris(result?.id_produit)"><ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.detailproduit_btn_deletetofavoris ? superP.globalLanguages?.detailproduit_btn_deletetofavoris : 'detailproduit_btn_deletetofavoris' }}</button>
+              </ion-item>  -->
+        </ion-list>
+    </ion-list>
+
+    <div *ngIf="!result">
+        <p text-center>{{ superP.globalLanguages?.detail_avantapres_noitems ? superP.globalLanguages?.detail_avantapres_noitems : 'detail_avantapres_noitems' }}</p>
+    </div>
+</ion-content>

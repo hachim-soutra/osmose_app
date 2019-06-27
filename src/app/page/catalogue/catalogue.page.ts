@@ -26,6 +26,7 @@ export class CataloguePage implements OnInit {
     self.globalProv.getCatalogueCategories().subscribe(Data => {
       if (Data) {
         self.result = Data;
+        console.log(this.result);
       }
     });
   }

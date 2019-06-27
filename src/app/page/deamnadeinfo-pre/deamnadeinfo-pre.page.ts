@@ -24,6 +24,7 @@ export class DeamnadeinfoPrePage implements OnInit {
     private modal: ModalController
   ) { 
     this.navParams.paramMap.subscribe( para =>{
+     
       this.res = para.get('id');
     })
       console.log('res : b ', this.res)
@@ -37,15 +38,15 @@ export class DeamnadeinfoPrePage implements OnInit {
      if(self.description) {
       self.storage.ready().then(() => {
         self.storage.get("id_contact").then((id_contact) => {
-          console.log('send  : ', id_contact)
-          self.globalProv.sendDemandeInfoServices(id_contact, self.res, self.description,this.date).subscribe(Data => {
+          console.log('send  : ', this.res)
+          self.globalProv.sendDemandeInfoEboutique(id_contact, self.res, self.description).subscribe(Data => {
             if (Data) {
               console.log('res demande : ', JSON.stringify(Data))
               let obj:any=[];
               obj = Data;
               if(obj.status == "200") {
                 self.globalProv.presentToast(obj.result,3000,"bottom");
-                this.nav.navigateRoot("catalogue/"+this.res);
+                this.nav.navigateRoot("article/"+this.res);
               } else {
                 self.globalProv.presentToast(obj.result,3000,"bottom");
               }

@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tabs', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './page/home/home.module#HomePageModule' },
   { path: 'loginT', loadChildren: './page/auth/login/login.module#LoginPageModule' },
 
   { path: 'panier', loadChildren: './page/panier/panier.module#PanierPageModule' },
   { path: 'checkout', loadChildren: './page/panier/checkout/checkout.module#CheckoutPageModule' },
   { path: 'DetailmessagePage/:id', loadChildren: './page/propos/propos.module#ProposPageModule' },
-  // { path: 'lieus', loadChildren: './page/lieu/lieu.module#LieuPageModule' },
   { path: 'tabs', loadChildren: './page/tabs/tabs.module#TabsPageModule' },
 
   { path: 'categories-page', loadChildren: './page/boutique/categories-page/categories-page.module#CategoriesPagePageModule' },
@@ -28,6 +27,9 @@ const routes: Routes = [
 
   { path: 'lieu', loadChildren: './page/info/lieu/lieu.module#LieuPageModule' },
   { path: 'cgv', loadChildren: './page/info/cgv/cgv.module#CgvPageModule' },
+  { path: 'detailavantapres/:id', loadChildren: './page/info/cgv/detail/detail.module#DetailPageModule' },
+
+  
   { path: 'about', loadChildren: './page/info/about/about.module#AboutPageModule' },
   { path: 'map/:id', loadChildren: './page/info/map/map.module#MapPageModule' },
 
@@ -40,7 +42,8 @@ const routes: Routes = [
   { path: 'rdv', loadChildren: './page/rdv/rdv.module#RdvPageModule' },
 
   { path: 'offre', loadChildren: './page/offre/offre.module#OffrePageModule' },
-  //{ path: 'offre/produit', loadChildren: './page/offre/services-pro/services-pro.module#ServicesProPageModule' },
+  { path: 'offre-produit-detail/:id', loadChildren: './page/offre/services-pro/services-pro.module#ServicesProPageModule' },
+  { path: 'offre-service-detail/:id', loadChildren: './page/offre/produit-detail/produit-detail.module#ProduitDetailPageModule' },
 
   { path: 'demandeinfo/cataloge/:id', loadChildren: './page/demandeinfo/demandeinfo.module#DemandeinfoPageModule' },
   { path: 'demandeinfo/prestation/:id', loadChildren: './page/deamnadeinfo-pre/deamnadeinfo-pre.module#DeamnadeinfoPrePageModule' },
@@ -48,24 +51,36 @@ const routes: Routes = [
 
   { path: 'register', loadChildren: './page/auth/register/register.module#RegisterPageModule' },
   { path: 'fav', loadChildren: './page/auth/fav/fav.module#FavPageModule' },
-  //{ path: 'profile', loadChildren: './page/auth/profile/profile.module#ProfilePageModule' },
-  //{ path: 'profile/participations', loadChildren: './page/auth/profile/participations/profil.module#ProfilPageModule' },
+
   { path: 'signin', loadChildren: './page/auth/signin/signin.module#SigninPageModule' },
   { path: 'signup', loadChildren: './page/auth/signup/signup.module#SignupPageModule' },
   { path: 'forget', loadChildren: './page/auth/forget/forget.module#ForgetPageModule' },
   { path: 'edit-profil', loadChildren: './page/auth/profile/edit-profil/edit-profil.module#EditProfilPageModule' },
-  { path: 'mes-participent', loadChildren: './page/auth/profile/mes-participent/mes-participent.module#MesParticipentPageModule' },
-  { path: 'list-demande', loadChildren: './page/auth/profile/list-demande/list-demande.module#ListDemandePageModule' },
-  { path: 'produitSer', loadChildren: './page/auth/profile/list-demande-services/list-demande-services.module#ListDemandeServicesPageModule' },
   { path: 'compte', loadChildren: './page/auth/compte/compte.module#ComptePageModule' },
   { path: 'evenement-detail', loadChildren: './page/evenement/evenement-detail/evenement-detail.module#EvenementDetailPageModule' },
   { path: 'verifier/:id', loadChildren: './page/verifier/verifier.module#VerifierPageModule' },
+
+  { path: 'mes-produit-service', loadChildren: './page/auth/profile/list-demande-services/list-demande-services.module#ListDemandeServicesPageModule' },
+  { path: 'mes-participent', loadChildren: './page/auth/profile/mes-participent/mes-participent.module#MesParticipentPageModule' },
+  { path: 'mes-article-fav', loadChildren: './page/auth/profile/article-fav/article-fav.module#ArticleFavPageModule' },
+  { path: 'mes-demandes', loadChildren: './page/auth/profile/list-demande/list-demande.module#ListDemandePageModule' },
+  { path: 'mes-demandes-boutique', loadChildren: './page/auth/profile/profile.module#ProfilePageModule' },
+  { path: 'mes-demande-service', loadChildren: './page/lieu/lieu.module#LieuPageModule' },
+
   // { path: 'splash', loadChildren: './splash/splash.module#SplashPageModule' },
-  { path: 'article-fav', loadChildren: './page/auth/profile/article-fav/article-fav.module#ArticleFavPageModule' },
-  { path: 'detailvisite', loadChildren: './page/detailvisite/detailvisite.module#DetailvisitePageModule' },  { path: 'blog', loadChildren: './page/info/blog/blog.module#BlogPageModule' },
-  { path: 'temiognage', loadChildren: './page/info/temiognage/temiognage.module#TemiognagePageModule' },
-  { path: 'tarif', loadChildren: './page/info/tarif/tarif.module#TarifPageModule' },
-  { path: 'shop', loadChildren: './page/info/shop/shop.module#ShopPageModule' },
+  { path: 'detailvisite', loadChildren: './page/detailvisite/detailvisite.module#DetailvisitePageModule' },
+  
+  { path: 'services', loadChildren: './page/service/service.module#ServicePageModule' },
+  { path: 'produit-service/:id', loadChildren: './page/service/produit-service/produit-service.module#ProduitServicePageModule' },
+  { path: 'service-detail/:idc/:id', loadChildren: './page/service/service-detail/service-detail.module#ServiceDetailPageModule' },
+
+
+
+
+  // { path: 'blog', loadChildren: './page/info/blog/blog.module#BlogPageModule' },
+  // { path: 'temiognage', loadChildren: './page/info/temiognage/temiognage.module#TemiognagePageModule' },
+  // { path: 'tarif', loadChildren: './page/info/tarif/tarif.module#TarifPageModule' },
+  // { path: 'shop', loadChildren: './page/info/shop/shop.module#ShopPageModule' },
 
 
 

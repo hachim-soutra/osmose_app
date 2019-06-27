@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SuperService {
 
-  URL:any="https://oryal2.mobigo.ch/";
-  WebSite = 'https:///tsarine.mobigo.ch/api/';
-  Topic:any = "topictsarine";
+  URL:any="https://osmose.mobigo.ch/";
+  WebSite = 'https:///osmose.mobigo.ch/api/';
+  Topic:any = "topict_osmose";
   PROFILE:any;
   Connected:Boolean;
   Token:any = null;

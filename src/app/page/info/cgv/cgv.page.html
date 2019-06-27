@@ -3,42 +3,39 @@
         <ion-buttons slot="start">
             <ion-menu-button menu="m1"></ion-menu-button>
           </ion-buttons>
-    <ion-title>{{ superP.globalLanguages?.lieux_titre ? superP.globalLanguages?.lieux_titre : 'lieux_titre' }}</ion-title>
+    <ion-title>
+        {{ superP.globalLanguages?.apresavant_titre ? superP.globalLanguages?.apresavant_titre : 'apresavant_titre' }}
+    </ion-title>
     
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <!-- <ion-list class="accordion-list" *ngIf="result">
-        <ion-list-header no-lines no-padding *ngFor="let res of result; let i=index" [ngClass]="{active: isGroupShown(i)}">
-          <button ion-item detail-none
-                  [style.background]="headerColor"
-                  [style.color]="textColor"
-                  (click)="toggleGroup(i)"
-                  class="accordion-header"
-                  [class.active]="expanded">
-              <ion-icon
-                item-left
-                name="ios-arrow-forward">
-              </ion-icon>
-              {{res?.titre }}
-          </button>
-          <div class="title-info">
-            <div class="description"  *ngIf="isGroupShown(i)" [innerHtml]="res?.texte"></div>
-          </div>
-        </ion-list-header>
+<ion-content >
+         <ion-card *ngFor="let res of result" (click)="goToDetail(res?.id)" class="ion-text-center">
+           <ion-card-header >
+              <div (click)="afficherProduit(res?.id_categorie)" class="img-card" [style.background-image]="'url('+res?.url_image+')'" style="background-position: center;background-size: cover;border-radius: 50%">
+                      <img src="../../../assets/img/background.png"/>
+                </div>
+              <!-- <ion-avatar class="ion-align-items-center">
+                  <img [src]="res?.url_image" />
+                </ion-avatar>  -->
+           </ion-card-header>
+           <ion-card-content>
+             
+              <h4 >{{ res?.titre }}</h4>
+           </ion-card-content>
+         </ion-card>
+      <!-- <ion-list lines="none" *ngIf="result">
+          <ion-item *ngFor="let res of result" (click)="goToDetail(res?.id)">
+           
+           <br>
+            <ion-label >
+                <h4 >{{ res?.titre }}</h4>
+            </ion-label>
+          </ion-item>
       </ion-list> -->
-      <ion-card *ngFor="let res of result; let i=index"> 
-        <ion-card-header color="primary">
-          <ion-card-subtitle>{{res?.titre }}</ion-card-subtitle>
-          <!-- <ion-card-title>{{res?.titre }}</ion-card-title> -->
-        </ion-card-header>
-        <ion-card-content>
-            <div class="description" [innerHtml]="res?.texte"></div>
-        </ion-card-content>
-      </ion-card>
-    
-      <div *ngIf="!result">
-        <p text-center>{{ superP.globalLanguages?.cgv_message_noitems ? superP.globalLanguages?.cgv_message_noitems : 'cgv_message_noitems' }}</p>
+
+      <div *ngIf="result.length == '0'">
+          <p text-center>{{ superP.globalLanguages?.actualite_message_noitems ? superP.globalLanguages?.actualite_message_noitems : 'actualite_message_noitems' }}</p>
       </div>
 </ion-content>

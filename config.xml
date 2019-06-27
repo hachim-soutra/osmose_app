@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.latsarine.lesapplicationsmobiles" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
-    <name>La Tsarine</name>
-    <description>An awesome la tsarine app.</description>
+<widget id="com.osmose.lesapplicationsmobiles" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
+    <name>La osmose</name>
+    <description>An awesome la osmose app.</description>
     <author email="lesapplicationsmobiles2017@gmail.com" href="http://www.lesapplicationsmobiles.com/">
         les applications mobiles
     </author>

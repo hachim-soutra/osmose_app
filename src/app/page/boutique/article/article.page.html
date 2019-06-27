@@ -1,52 +1,64 @@
 <ion-header>
-  <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button text="" defaultHref="categories-page"></ion-back-button>
-      </ion-buttons>
-    <ion-title>
-      {{ superP.globalLanguages?.detailproduit_titre ? superP.globalLanguages?.detailproduit_titre : 'detailproduit_titre' }}    </ion-title>
-    <ion-button [routerLink]="[ '/panier' ]" slot="end" >
-      <ion-icon name="cart"></ion-icon>
-      <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
-<ion-content >  
-<ion-list lines="none">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="categories-page"></ion-back-button>
+        </ion-buttons>
+      <ion-title>
+        {{ superP.globalLanguages?.detailproduit_titre ? superP.globalLanguages?.detailproduit_titre : 'detailproduit_titre' }}    </ion-title>
+      <!-- <ion-button [routerLink]="[ '/panier' ]" slot="end" >
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="primary">{{ superP.collecteurPanier?.length }}</ion-badge>   
+      </ion-button> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >  
+  <ion-list lines="none">
+  
+    <ion-img [src]="res?.url_image" ></ion-img>
+    <ion-item detail-none no-line>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+              <ion-text color="primary">
+                  <h3>{{res?.titre}}</h3 >
+                </ion-text>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+              <h3><b>{{res?.prix}} {{ superP.globalLanguages?.capitale }}</b></h3>
+              <h3 *ngIf="res?.prix_barre != '0'" style="color: red;text-decoration: line-through;">{{res?.prix_barre}} {{ superP.globalLanguages?.capitale }}</h3>
 
-  <ion-img [src]="res?.url_image" ></ion-img>
-  <ion-item detail-none no-line>
-    <ion-text color="primary">
-      <h3>{{res?.name}}</h3 >
-    </ion-text>
-  </ion-item>
-  <!-- <ion-item detail-none no-line *ngIf="res.declinaison?.length != '0'">
-    <ion-text >
-    <h3> {{ superP.globalLanguages?.tailleLabel }} :</h3>
-    </ion-text>
-  </ion-item> -->
-  <!-- <ion-item detail-none no-line> -->
-    <!-- <ion-select *ngIf="res.declinaison?.length != '0'" placeholder="{{ superP.globalLanguages?.tailleLabel1 }}" (ionChange)="declinisonSelected($event)"  [(ngModel)]="declinison">
-      <ion-select-option *ngFor="let x of res?.declinaison" [value]="x">
-        {{ x.attribut }}
-      </ion-select-option>
-    </ion-select> -->
-  <!-- </ion-item> -->
-  <ion-item detail-none no-line  text-center><br>
-    <h3>{{ superP.globalLanguages?.commande_detail_prix }} : <b>{{res?.price}} {{ superP.globalLanguages?.capitale }}</b></h3>
-  </ion-item>
-  <ion-item detail-none  *ngIf="res?.description">
-    <p class="description" [innerHTML]='res?.description' style="white-space: pre-wrap"></p><br>
-  </ion-item> 
-  <ion-button expand="block" shape="round" *ngIf="showAdd" (click)="addToFavoris(res?.id_product)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_addtofavoris ? superP.globalLanguages?.actualite_detailproduit_addtofavoris : 'actualite_detailproduit_addtofavoris' }}</ion-button>
-   
-  <ion-button expand="block" shape="round" fill="outline" *ngIf="!showAdd" (click)="removeFromFavoris(res?.id_product)"><ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_deletefromfavoris ? superP.globalLanguages?.actualite_detailproduit_deletefromfavoris : 'actualite_detailproduit_deletefromfavoris' }}</ion-button> 
-
-  <!-- <ion-button expand="block" shape="round" (click)="demandeInfo(res?.id_produit)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button> -->
-  <ion-button expand="block" shape="round" (click)="addToCart(res)"> <ion-icon ios="ios-cart" md="md-cart">
-    </ion-icon>&nbsp;&nbsp;
-    {{ superP.globalLanguages?.detail_produit_ajouterPanier ? superP.globalLanguages?.detail_produit_ajouterPanier :'detail_produit_ajouterPanier' }}   
-  </ion-button>
-</ion-list>
-</ion-content>
-
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+     
+    </ion-item>
+    <!-- <ion-item detail-none no-line *ngIf="res.declinaison?.length != '0'">
+      <ion-text >
+      <h3> {{ superP.globalLanguages?.tailleLabel }} :</h3>
+      </ion-text>
+    </ion-item> -->
+    <!-- <ion-item detail-none no-line> -->
+      <!-- <ion-select *ngIf="res.declinaison?.length != '0'" placeholder="{{ superP.globalLanguages?.tailleLabel1 }}" (ionChange)="declinisonSelected($event)"  [(ngModel)]="declinison">
+        <ion-select-option *ngFor="let x of res?.declinaison" [value]="x">
+          {{ x.attribut }}
+        </ion-select-option>
+      </ion-select> -->
+    <!-- </ion-item> -->
+    <!-- <ion-item detail-none no-line  text-center><br>
+    </ion-item> -->
+    <ion-item detail-none  *ngIf="res?.description">
+      <p class="description" [innerHTML]='res?.description' style="white-space: pre-wrap"></p><br>
+    </ion-item> 
+    <ion-button color="success" expand="block" shape="round" *ngIf="showAdd" (click)="addToFavoris(res?.id_produit)"> <ion-icon ios="ios-heart" md="md-heart"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_addtofavoris ? superP.globalLanguages?.actualite_detailproduit_addtofavoris : 'actualite_detailproduit_addtofavoris' }}</ion-button> 
+     
+     <ion-button color="danger" expand="block" shape="round"  *ngIf="!showAdd" (click)="removeFromFavoris(res?.id_product)"><ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_detailproduit_deletefromfavoris ? superP.globalLanguages?.actualite_detailproduit_deletefromfavoris : 'actualite_detailproduit_deletefromfavoris' }}</ion-button> 
+  
+    <ion-button expand="block" shape="round" (click)="demandeInfo(res?.id_produit)"> <ion-icon ios="ios-create" md="md-create"></ion-icon>&nbsp;&nbsp;{{ superP.globalLanguages?.actualite_demande_info_btn ? superP.globalLanguages?.actualite_demande_info_btn : 'actualite_demande_info_btn' }}</ion-button>
+    <!-- <ion-button expand="block" shape="round" (click)="addToCart(res)"> <ion-icon ios="ios-cart" md="md-cart">
+      </ion-icon>&nbsp;&nbsp;
+      {{ superP.globalLanguages?.detail_produit_ajouterPanier ? superP.globalLanguages?.detail_produit_ajouterPanier :'detail_produit_ajouterPanier' }}   
+    </ion-button> -->
+  </ion-list>
+  </ion-content>
+  
+  

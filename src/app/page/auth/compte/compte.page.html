@@ -14,6 +14,10 @@
   </div><hr>
         <h4 text-center class="info">{{ superP.User?.nom }} {{ superP.User?.prenom }}</h4>
         <p text-center class="email">{{ superP.User?.email }}</p>
+        <h4 class="info">  {{ superP.User?.solde_point }}
+            {{ superP.globalLanguages.solde_point ? 
+             superP.globalLanguages.solde_point :
+              'solde_point' }}</h4>
         <ion-toolbar color="primary">
             <ion-grid no-margin>
                 <ion-row no-margin text-center>
@@ -31,37 +35,40 @@
                   </ion-col>
                 </ion-row>
             </ion-grid> 
-           </ion-toolbar> 
-    <ion-button color="primary" fill="outline"  expand="block" round strong (click)="participent()">
+           </ion-toolbar>
+
+          <ion-button color="primary" fill="outline"  expand="block" round strong [routerLink]="[ '/mes-produit-service' ]">
+              <ion-icon name="star"></ion-icon>&nbsp;&nbsp;
+               {{ superP.globalLanguages.profile_btn_produitfavoris ? superP.globalLanguages.profile_btn_produitfavoris :'list_demande_services' }} 
+          </ion-button>
+
+    <ion-button color="primary" fill="outline"  expand="block" round strong [routerLink]="[ '/mes-participent' ]">
     <ion-icon ios="ios-list-box" md="md-list-box"></ion-icon>&nbsp;&nbsp; 
     {{ superP.globalLanguages.profile_btn_participations ? 
       superP.globalLanguages.profile_btn_participations : 
       'profile_btn_participations' }} </ion-button>
   
-    <ion-button color="primary" fill="outline"  expand="block" round strong (click)="MesarticlefavorisPage()">
-    <ion-icon name="star"></ion-icon>&nbsp;&nbsp; 
-    {{ superP.globalLanguages.profile_btn_articlefavorie ? 
+    <ion-button color="primary" fill="outline"  expand="block" round strong [routerLink]="[ '/mes-article-fav' ]">
+        <ion-icon name="appstore"></ion-icon>    {{ superP.globalLanguages.profile_btn_articlefavorie ? 
       superP.globalLanguages.profile_btn_articlefavorie :
        'profile_btn_articlefavorie' }} </ion-button>
   
-    <ion-button color="primary" fill="outline"  expand="block" round strong (click)="listdemande()">
-    <ion-icon name="star">
-    </ion-icon>&nbsp;&nbsp; {{ superP.globalLanguages.demandeinfo_btn_listdemandes ?
+    <ion-button color="primary" fill="outline"  expand="block" round strong [routerLink]="[ '/mes-demandes' ]">
+        <ion-icon name="clipboard"></ion-icon>  &nbsp;&nbsp; {{ superP.globalLanguages.demandeinfo_btn_listdemandes ?
        superP.globalLanguages.demandeinfo_btn_listdemandes :
         'demandeinfo_btn_listdemandes' }} </ion-button>
   
-    <!-- <button ion-button outline round block margin-bottom 
-    (click)="goTo('ListdemandesEboutiquePage')">
+    <ion-button color="primary" fill="outline"  round  expand="block" [routerLink]="[ '/mes-demandes-boutique' ]">
     <ion-icon name="star"></ion-icon>&nbsp;&nbsp; 
-    {{ superP.globalLanguages.list_demande_boutique ? 
-      superP.globalLanguages.list_demande_boutique :
-       'list_demande_boutique' }} </button> -->
+    {{ superP.globalLanguages.list_demande_boutique ?
+      superP.globalLanguages.list_demande_boutique : 
+      'list_demande_boutique' }}  </ion-button>
   
-    <ion-button color="primary" fill="outline"  expand="block" round strong (click)="demmandeService()">
-    <ion-icon name="star"></ion-icon>&nbsp;&nbsp;
-     {{ superP.globalLanguages.profile_btn_produitfavoris ? 
-      superP.globalLanguages.profile_btn_produitfavoris :
-       'list_demande_services' }} </ion-button>
+    <ion-button color="primary" fill="outline"  expand="block" round strong [routerLink]="[ '/mes-demande-service' ]">
+        <ion-icon name="shirt"></ion-icon>   {{ superP.globalLanguages.list_demande_services ?
+      superP.globalLanguages.list_demande_services :
+       'list_demande_services' }}  </ion-button>
+
 <ion-footer >
     
    </ion-footer>

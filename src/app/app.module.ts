@@ -41,8 +41,8 @@ import { environment } from '../environments/environment';
 
 
 @NgModule({
-  declarations: [AppComponent,FavComponent,LoginComponent,ProfilComponent,ForgetComponent,RegisterComponent],
-  entryComponents: [LoginComponent,FavComponent,ProfilComponent,ForgetComponent,RegisterComponent],
+  declarations: [AppComponent,FavComponent,ProfilComponent,ForgetComponent,RegisterComponent],
+  entryComponents: [FavComponent,ProfilComponent,ForgetComponent,RegisterComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(), 

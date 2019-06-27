@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 import { SuperService } from 'src/app/service/super.service';
+import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cgv',
@@ -8,29 +10,31 @@ import { SuperService } from 'src/app/service/super.service';
   styleUrls: ['./cgv.page.scss'],
 })
 export class CgvPage implements OnInit {
-  result: Object;
+  result:any = [];
 
+  constructor(public superP: SuperService,public storage:Storage ,public globalProv: GlobalService,public navCtrl: NavController) {}
 
-  constructor(
-    public globalProv: GlobalService,
-    public superP: SuperService
-  ) { }
+  ngOnInit(): void {
+      this.init() 
+  }
 
-  ngOnInit() {
-    this.init();
-}
-
-
-init() {
-  let self = this;
-  console.log("connected : "+self.superP.Connected);
-  if(self.superP.Connected){
-    self.globalProv.getCgv().subscribe(Data => {
+  init() {
+    let self = this;
+    self.globalProv.listoffres().subscribe(Data => {
       if (Data) {
-        self.result = Data;
+        let obj:any = [];
+        obj=Data;
+        if(obj.status == "200") {
+            this.result = obj.result;
+            console.log('result : ', this.result)
+        } else {
+            this.result = [];
+        }
       }
     });
   }
-}
+  goToDetail(id) {  
+    this.navCtrl.navigateForward("detailavantapres/"+id );
+  } 
 
-}
+} 
