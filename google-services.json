@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "202702672962",
-    "firebase_url": "https://latsarine-f632e.firebaseio.com",
-    "project_id": "latsarine-f632e",
-    "storage_bucket": "latsarine-f632e.appspot.com"
+    "project_number": "286229747474",
+    "firebase_url": "https://osmose-403ec.firebaseio.com",
+    "project_id": "osmose-403ec",
+    "storage_bucket": "osmose-403ec.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:202702672962:android:f9b18a267c1d1603",
+        "mobilesdk_app_id": "1:286229747474:android:b8b2a80292c286ef",
         "android_client_info": {
-          "package_name": "com.latsarine.lesapplicationsmobiles"
+          "package_name": "com.osmose.lesapplicationsmobiles"
         }
       },
       "oauth_client": [
         {
-          "client_id": "202702672962-a6tojhhtknv0trlhn69ugp7mifo3evs2.apps.googleusercontent.com",
+          "client_id": "286229747474-b1pg6kvhmpm4q6t3spr9lgpg1fu59fvd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyArEaamXVA0q8sBuZAweZOj-sv9nxpUHEc"
+          "current_key": "AIzaSyCqT0O8GKtJkCFNe0P_mFurB1nIiORmfIY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "202702672962-a6tojhhtknv0trlhn69ugp7mifo3evs2.apps.googleusercontent.com",
+              "client_id": "286229747474-b1pg6kvhmpm4q6t3spr9lgpg1fu59fvd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

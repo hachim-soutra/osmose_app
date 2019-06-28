@@ -3,12 +3,14 @@
       <ion-buttons slot="start">
         <ion-back-button text="" defaultHref="home"></ion-back-button>
       </ion-buttons>
-      {{ superP.globalLanguages.auth_header ? superP.globalLanguages.auth_header : 'auth_header' }}
+      <ion-title>
+        {{ superP.globalLanguages.auth_header ? superP.globalLanguages.auth_header : 'auth_header' }}
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
 <ion-content ion-padding text-center>
-    <img class="animated bounceIn" src="../../../assets/img/logoheader.png" width="100%" height="30%" >
+    <img class="animated bounceIn" src="../../../assets/img/logoheader.png" >
     <form [formGroup]="form" (ngSubmit)="save()">
         <ion-item>
             <ion-label position="floating">

@@ -23,11 +23,16 @@
           <p text-style='max-height: 200px !important; overflow-y: overlay !important' text-center class="text_Accueil">
               {{ res?.description }}
           </p>
-          <div *ngIf="res.txtbtn">
-            <ion-button (click)="navHome(res?.url)" >
+          <div *ngIf="res.txtbtn" >
+            <ion-button *ngIf="res.type_url != '999'" (click)="navHome(res?.url)" >
               <ion-icon slot="start" name="eye"></ion-icon>
             {{ res?.txtbtn}}
             </ion-button>
+            <ion-button *ngIf="res.type_url == '999'" href="{{res?.url}}" target="_blank">
+              <ion-icon slot="start" name="eye"></ion-icon>
+            {{ res?.txtbtn}}
+            </ion-button>
+            <!-- <a ion-button target="_blank" *ngIf="res.type_url == '999'" text-center ion-button round style="background-color : #583378 !important"  href="{{res?.url}}">{{ res?.txtbtn }}</a> -->
           </div>
       </div>
     </ion-slide>

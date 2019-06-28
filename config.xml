@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.osmose.lesapplicationsmobiles" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
+<widget id="com.osmose.lesapplicationsmobile" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
     <name>La osmose</name>
     <description>An awesome la osmose app.</description>
     <author email="lesapplicationsmobiles2017@gmail.com" href="http://www.lesapplicationsmobiles.com/">
@@ -26,6 +26,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#e55d5f" />
     <platform name="android">
+        <resource-file src="google-services.json" target="app/google-services.json" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
